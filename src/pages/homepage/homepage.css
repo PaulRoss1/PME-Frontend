@@ -1,0 +1,29 @@
+.active {
+  color: red;
+}
+
+.map {
+  outline: 2px solid red;
+  padding: 20px;
+}
+
+.filter {
+  outline: 2px solid red;
+  padding: 20px;
+}
+
+.event {
+  outline: 2px solid red;
+  padding: 20px;
+  width: 400px;
+  margin: auto;
+}
+
+.event img {
+  max-width: 100%;
+}
+
+.footer {
+  outline: 2px solid red;
+  padding: 20px;
+}
