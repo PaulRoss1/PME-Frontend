@@ -7,6 +7,12 @@ export const CartItem = (props) => {
   const { addToCart, removeFromCart, cartItems, updateCartItemCount } =
     useContext(EventContext);
 
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value;
+    const numericValue = inputValue.replace(/[^0-9]/g, "");
+    updateCartItemCount(Number(numericValue), id);
+  };
+
   return (
     <div className="cartItem">
       <img src={image} alt="" />
@@ -15,10 +21,7 @@ export const CartItem = (props) => {
         <p>price: {price}</p>
         <div className="countHandler">
           <button onClick={() => removeFromCart(id)}>-</button>
-          <input
-            value={cartItems[id]}
-            onChange={(e) => updateCartItemCount(Number(e.target.value), id)}
-          />
+          <input value={cartItems[id]} onChange={handleInputChange} />
           <button onClick={() => addToCart(id)}>+</button>
         </div>
       </div>

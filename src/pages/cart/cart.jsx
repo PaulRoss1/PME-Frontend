@@ -1,40 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "./cart.css";
 import { EventContext } from "../../context/event-context";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CartItem } from "./cart-item";
 
 export const Cart = () => {
-  const { id } = useParams();
-  const { addToCart, events, cartItems, getTotalCarAmount } =
-    useContext(EventContext);
-  const [loading, setLoading] = useState(true);
-  const event = events.find((event) => event.id === parseInt(id));
-  const cartItemsAmount = cartItems[id];
-  const totalAmount = getTotalCarAmount();
+  const { events, cartItems, getTotalCartAmount } = useContext(EventContext);
+
+  const totalAmount = getTotalCartAmount();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setLoading(false);
-  }, [event]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <>
-      {id && (
-        <div>
-          {event?.name}
-          <br />
-          <button onClick={() => addToCart(id)}>
-            add to cart {cartItemsAmount > 0 && <>({cartItemsAmount})</>}
-          </button>
-          <br />
-          {id}
-        </div>
-      )}
       {totalAmount > 0 ? (
         <>
           <div className="cart">

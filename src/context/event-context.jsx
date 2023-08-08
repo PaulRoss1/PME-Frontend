@@ -32,7 +32,7 @@ export const EventContextProvider = (props) => {
     }
   };
 
-  const getTotalCarAmount = () => {
+  const getTotalCartAmount = () => {
     let totalAmount = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
@@ -61,7 +61,7 @@ export const EventContextProvider = (props) => {
     removeFromCart,
     events,
     updateCartItemCount,
-    getTotalCarAmount,
+    getTotalCartAmount,
   };
 
   return (
