@@ -4,6 +4,7 @@ import { Navbar } from "./components/navbar";
 import { Homepage } from "./pages/homepage/homepage";
 import { EventPage } from "./pages/event_page/event_page";
 import { Cart } from "./pages/cart/cart";
+import { Map } from "./pages/homepage/map";
 import { EventContextProvider } from "./context/event-context";
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/event/:id" element={<EventPage />} />
             <Route path="/cart" element={<Cart />} />
+
+            <Route path="/map" element={<Map />} />
           </Routes>
         </Router>
       </EventContextProvider>

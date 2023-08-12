@@ -4,6 +4,7 @@ import "./homepage.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Event } from "./event";
+import { Map } from "./map";
 
 export const Homepage = () => {
   const [events, setEvents] = useState([]);
@@ -12,6 +13,8 @@ export const Homepage = () => {
   const [searchInput, setSearchInput] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [activeFilter, setActiveFilter] = useState("all");
+
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   useEffect(() => {
     fetchEvents();
@@ -81,6 +84,7 @@ export const Homepage = () => {
   };
 
   const handleEventTypeFilterChange = (filterOption) => {
+    setSelectedEvent(null);
     setActiveFilter(filterOption);
     setEventTypeFilter(filterOption);
     setCurrentPage(1); // Reset to the first page when changing the event type filter
@@ -113,6 +117,7 @@ export const Homepage = () => {
   return (
     <div>
       <h1>Events</h1>
+      <Map data={events} info={{ selectedEvent, setSelectedEvent }} />
       <div>
         <button
           onClick={() => handleEventTypeFilterChange("all")}
