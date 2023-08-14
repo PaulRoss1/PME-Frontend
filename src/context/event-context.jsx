@@ -15,6 +15,12 @@ export const EventContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
   const [events, setEvents] = useState([]);
 
+  const [loading, setLoading] = useState(true);
+
+  // useEffect(() => {
+  //   localStorage.setItem("cart", JSON.stringify(cartItems));
+  // }, [cartItems]);
+
   useEffect(() => {
     fetchEvents();
   }, []);
@@ -62,6 +68,8 @@ export const EventContextProvider = (props) => {
     events,
     updateCartItemCount,
     getTotalCartAmount,
+    loading,
+    setLoading,
   };
 
   return (

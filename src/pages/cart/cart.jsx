@@ -5,10 +5,16 @@ import { useNavigate } from "react-router-dom";
 import { CartItem } from "./cart-item";
 
 export const Cart = () => {
-  const { events, cartItems, getTotalCartAmount } = useContext(EventContext);
+  const { events, cartItems, getTotalCartAmount, loading, setLoading } =
+    useContext(EventContext);
 
   const totalAmount = getTotalCartAmount();
   const navigate = useNavigate();
+
+  if (loading) {
+    setLoading(false);
+    return <div>Loading...</div>; // Display loading state
+  }
 
   return (
     <>

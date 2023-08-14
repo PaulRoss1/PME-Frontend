@@ -17,8 +17,6 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/event/:id" element={<EventPage />} />
             <Route path="/cart" element={<Cart />} />
-
-            <Route path="/map" element={<Map />} />
           </Routes>
         </Router>
       </EventContextProvider>

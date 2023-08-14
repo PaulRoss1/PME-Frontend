@@ -7,16 +7,24 @@ export const EventPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { events, removeFromCart, cartItems, updateCartItemCount, addToCart } =
-    useContext(EventContext);
-  const [loading, setLoading] = useState(true);
-  const event = events.find((event) => event.id === parseInt(id));
+  const {
+    events,
+    removeFromCart,
+    cartItems,
+    updateCartItemCount,
+    addToCart,
+    loading,
+    setLoading,
+  } = useContext(EventContext);
 
-  useEffect(() => {
-    setLoading(false);
-  }, [event]);
+  const selectedEvent = events.find((event) => event.id === parseInt(id));
+
+  const sameDayEvents = events.filter(
+    (event) => event.date === selectedEvent.date
+  );
 
   if (loading) {
+    setLoading(false);
     return <div>Loading...</div>;
   }
 
@@ -28,9 +36,9 @@ export const EventPage = () => {
 
   return (
     <div>
-      {event?.name}
+      {selectedEvent?.name}
       <br />
-      price: {event?.price}
+      price: {selectedEvent?.price}
       <br />
       id: {id}
       <br />
@@ -41,7 +49,29 @@ export const EventPage = () => {
         <input value={cartItems[id]} onChange={handleInputChange} />
         <button onClick={() => addToCart(id)}>+</button>
       </div>
-      <button onClick={() => navigate("/cart")}>Buy tickets</button>
+      <button onClick={() => navigate("/cart")} disabled={cartItems[id] === 0}>
+        Buy tickets
+      </button>
+      {/* <div>
+        <h1>more events on this day</h1>
+
+        {sameDayEvents.map((event) => {
+          return <p>{event.name}</p>;
+        })}
+      </div> */}
+      <div>
+        <h1>more events on this day</h1>
+
+        {sameDayEvents.length > 0 ? (
+          sameDayEvents.map((event) => (
+            <p key={event.id}>
+              {event.name} - {event.date}
+            </p>
+          ))
+        ) : (
+          <p>No other events on this day</p>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,10 +1,10 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./homepage.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Event } from "./event";
 import { Map } from "./map";
+import { Filter } from "./filter";
 
 export const Homepage = () => {
   const [events, setEvents] = useState([]);
@@ -116,48 +116,17 @@ export const Homepage = () => {
 
   return (
     <div>
-      <h1>Events</h1>
       <Map data={events} info={{ selectedEvent, setSelectedEvent }} />
-      <div>
-        <button
-          onClick={() => handleEventTypeFilterChange("all")}
-          className={activeFilter === "all" ? "active" : ""}
-        >
-          All Events
-        </button>
-        <button
-          onClick={() => handleEventTypeFilterChange("djs")}
-          className={activeFilter === "djs" ? "active" : ""}
-        >
-          DJ's
-        </button>
-        <button
-          onClick={() => handleEventTypeFilterChange("live-music")}
-          className={activeFilter === "live-music" ? "active" : ""}
-        >
-          Live Music
-        </button>
-      </div>
-      <div>
-        <select
-          value={dateFilter}
-          onChange={(e) => handleDateFilterChange(e.target.value)}
-        >
-          <option value="whole-period">Whole Period</option>
-          <option value="today">Today</option>
-          <option value="tomorrow">Tomorrow</option>
-          <option value="this-week">This Week</option>
-          <option value="this-weekend">This Weekend</option>
-        </select>
-      </div>
-      <div>
-        <input
-          type="text"
-          placeholder="Search events"
-          value={searchInput}
-          onChange={handleSearchInputChange}
-        />
-      </div>
+      <Filter
+        data={{
+          handleEventTypeFilterChange,
+          activeFilter,
+          dateFilter,
+          handleDateFilterChange,
+          searchInput,
+          handleSearchInputChange,
+        }}
+      />
       <ul>
         {currentEvents.map((event) => (
           <Event data={event} key={event.id} />
