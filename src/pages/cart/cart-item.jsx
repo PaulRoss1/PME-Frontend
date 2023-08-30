@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./cart.css";
 import { EventContext } from "../../context/event-context";
+import { Link } from "react-router-dom";
 
 export const CartItem = (props) => {
   const { id, name, image, price } = props.data;
@@ -17,7 +18,9 @@ export const CartItem = (props) => {
     <div className="cartItem">
       <img src={image} alt="" />
       <div className="description">
-        <p>{name}</p>
+        <Link to={`/event/${id}`}>
+          {name} ({id})
+        </Link>
         <p>price: {price}</p>
         <div className="countHandler">
           <button onClick={() => removeFromCart(id)}>-</button>
@@ -25,6 +28,8 @@ export const CartItem = (props) => {
           <button onClick={() => addToCart(id)}>+</button>
         </div>
       </div>
+      <br />
+      <hr />
     </div>
   );
 };

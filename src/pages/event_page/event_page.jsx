@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./event_page.css";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { EventContext } from "../../context/event-context";
 
 export const EventPage = () => {
@@ -19,9 +19,9 @@ export const EventPage = () => {
 
   const selectedEvent = events.find((event) => event.id === parseInt(id));
 
-  const sameDayEvents = events.filter(
-    (event) => event.date === selectedEvent.date
-  );
+  const sameDayEvents = events
+    .filter((event) => event.date === selectedEvent.date)
+    .filter((event) => event.id !== selectedEvent.id);
 
   if (loading) {
     setLoading(false);
@@ -36,7 +36,17 @@ export const EventPage = () => {
 
   return (
     <div>
+      <img src={selectedEvent?.image}></img>
+      <br />
       {selectedEvent?.name}
+      <br />
+      {selectedEvent?.date}
+      <br />
+      {selectedEvent?.event_type}
+      <br />
+      venue: {selectedEvent?.venue}
+      <br />
+      address: {selectedEvent?.address}
       <br />
       price: {selectedEvent?.price}
       <br />
@@ -52,25 +62,17 @@ export const EventPage = () => {
       <button onClick={() => navigate("/cart")} disabled={cartItems[id] === 0}>
         Buy tickets
       </button>
-      {/* <div>
-        <h1>more events on this day</h1>
-
-        {sameDayEvents.map((event) => {
-          return <p>{event.name}</p>;
-        })}
-      </div> */}
       <div>
-        <h1>more events on this day</h1>
+        <br />
+        {sameDayEvents.length > 0 && <h2>more events on this day</h2>}
 
-        {sameDayEvents.length > 0 ? (
+        {sameDayEvents.length > 0 &&
           sameDayEvents.map((event) => (
-            <p key={event.id}>
-              {event.name} - {event.date}
-            </p>
-          ))
-        ) : (
-          <p>No other events on this day</p>
-        )}
+            <>
+              <Link to={`/event/${event.id}`}>{event.name}</Link>
+              <br />
+            </>
+          ))}
       </div>
     </div>
   );

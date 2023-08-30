@@ -11,15 +11,20 @@ const getDefaultCart = (events) => {
   return cart;
 };
 
+const getInitialState = () => {
+  const cart = localStorage.getItem("cart");
+  return cart ? JSON.parse(cart) : {};
+};
+
 export const EventContextProvider = (props) => {
-  const [cartItems, setCartItems] = useState({});
+  const [cartItems, setCartItems] = useState(getInitialState);
   const [events, setEvents] = useState([]);
 
   const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   localStorage.setItem("cart", JSON.stringify(cartItems));
-  // }, [cartItems]);
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   useEffect(() => {
     fetchEvents();
@@ -32,7 +37,9 @@ export const EventContextProvider = (props) => {
       );
       const fetchedEvents = response.data;
       setEvents(fetchedEvents);
-      setCartItems(getDefaultCart(fetchedEvents)); // Initialize the cart with fetched events
+      if (Object.keys(cartItems).length === 0) {
+        setCartItems(getDefaultCart(fetchedEvents));
+      }
     } catch (error) {
       console.error("Error fetching events:", error);
     }

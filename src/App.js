@@ -4,7 +4,6 @@ import { Navbar } from "./components/navbar";
 import { Homepage } from "./pages/homepage/homepage";
 import { EventPage } from "./pages/event_page/event_page";
 import { Cart } from "./pages/cart/cart";
-import { Map } from "./pages/homepage/map";
 import { EventContextProvider } from "./context/event-context";
 
 function App() {
