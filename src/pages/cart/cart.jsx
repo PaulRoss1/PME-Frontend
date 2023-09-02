@@ -1,16 +1,22 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./cart.css";
 import { EventContext } from "../../context/event-context";
 import { useNavigate } from "react-router-dom";
 import { CartItem } from "./cart-item";
 
-let totalAmount;
-
 export const Cart = () => {
-  const { events, cartItems, getTotalCartAmount } = useContext(EventContext);
+  const { events, cartItems } = useContext(EventContext);
+  const [totalAmount, setTotalAmount] = useState(0);
 
   useEffect(() => {
-    totalAmount = events.length > 0 ? getTotalCartAmount() : 0;
+    let total = 0;
+    for (const item in cartItems) {
+      if (cartItems[item] > 0) {
+        let itemInfo = events.find((event) => event.id === Number(item));
+        total += cartItems[item] * itemInfo.price;
+      }
+    }
+    setTotalAmount(total);
   }, [events, cartItems]);
 
   const navigate = useNavigate();

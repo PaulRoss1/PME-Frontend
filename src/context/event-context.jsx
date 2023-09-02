@@ -43,17 +43,6 @@ export const EventContextProvider = (props) => {
     }
   };
 
-  const getTotalCartAmount = () => {
-    let totalAmount = 0;
-    for (const item in cartItems) {
-      if (cartItems[item] > 0) {
-        let itemInfo = events.find((event) => event.id === Number(item));
-        totalAmount += cartItems[item] * itemInfo.price;
-      }
-    }
-    return totalAmount;
-  };
-
   const addToCart = (id) => {
     setCartItems((prev) => ({ ...prev, [id]: prev[id] + 1 }));
   };
@@ -72,7 +61,6 @@ export const EventContextProvider = (props) => {
     removeFromCart,
     events,
     updateCartItemCount,
-    getTotalCartAmount,
   };
 
   return (
