@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
 export const EventContext = createContext(null);
@@ -19,8 +19,6 @@ const getInitialState = () => {
 export const EventContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getInitialState);
   const [events, setEvents] = useState([]);
-
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
@@ -75,8 +73,6 @@ export const EventContextProvider = (props) => {
     events,
     updateCartItemCount,
     getTotalCartAmount,
-    loading,
-    setLoading,
   };
 
   return (

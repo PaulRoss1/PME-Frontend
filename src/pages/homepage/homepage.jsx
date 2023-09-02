@@ -1,26 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "./homepage.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { Event } from "./event";
 import { Map } from "./map";
 import { Filter } from "./filter";
+import { Event } from "./event";
 
 export const Homepage = () => {
-  const [events, setEvents] = useState([]);
+  const [displayedEvents, setDisplayedEvents] = useState([]);
   const [eventTypeFilter, setEventTypeFilter] = useState("all");
   const [dateFilter, setDateFilter] = useState("whole-period");
   const [searchInput, setSearchInput] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [activeFilter, setActiveFilter] = useState("all");
-
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetchEvents();
   }, [eventTypeFilter, dateFilter, searchInput, currentPage]);
 
   const fetchEvents = async () => {
+    setLoading(true);
     try {
       let url = "http://127.0.0.1:8000/api/v1/events/all/";
 
@@ -37,9 +36,8 @@ export const Homepage = () => {
         const today = new Date().toISOString().split("T")[0];
         filteredEvents = filteredEvents.filter((event) => event.date === today);
       } else if (dateFilter === "tomorrow") {
-        const today = new Date();
-        const tomorrow = new Date(today);
-        tomorrow.setDate(today.getDate() + 1);
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
         const tomorrowISOString = tomorrow.toISOString().split("T")[0];
         filteredEvents = filteredEvents.filter(
           (event) => event.date === tomorrowISOString
@@ -77,7 +75,8 @@ export const Homepage = () => {
         );
       }
 
-      setEvents(filteredEvents);
+      setDisplayedEvents(filteredEvents);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching events:", error);
     }
@@ -85,26 +84,30 @@ export const Homepage = () => {
 
   const handleEventTypeFilterChange = (filterOption) => {
     setSelectedEvent(null);
-    setActiveFilter(filterOption);
     setEventTypeFilter(filterOption);
-    setCurrentPage(1); // Reset to the first page when changing the event type filter
+    setCurrentPage(1);
   };
 
   const handleDateFilterChange = (filterOption) => {
+    setSelectedEvent(null);
     setDateFilter(filterOption);
-    setCurrentPage(1); // Reset to the first page when changing the date filter
+    setCurrentPage(1);
   };
 
   const handleSearchInputChange = (e) => {
     setSearchInput(e.target.value);
-    setCurrentPage(1); // Reset to the first page when changing the search input
+    setCurrentPage(1);
+    setSelectedEvent(null);
   };
 
   const eventsPerPage = 5;
-  const totalPages = Math.ceil(events.length / eventsPerPage);
+  const totalPages = Math.ceil(displayedEvents.length / eventsPerPage);
   const indexOfLastEvent = currentPage * eventsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
-  const currentEvents = events.slice(indexOfFirstEvent, indexOfLastEvent);
+  const currentEvents = displayedEvents.slice(
+    indexOfFirstEvent,
+    indexOfLastEvent
+  );
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
@@ -116,30 +119,39 @@ export const Homepage = () => {
 
   return (
     <div>
-      <Map data={events} info={{ selectedEvent, setSelectedEvent }} />
+      <Map data={displayedEvents} info={{ selectedEvent, setSelectedEvent }} />
       <Filter
         data={{
+          eventTypeFilter,
           handleEventTypeFilterChange,
-          activeFilter,
           dateFilter,
           handleDateFilterChange,
           searchInput,
           handleSearchInputChange,
         }}
       />
-      <ul>
-        {currentEvents.map((event) => (
-          <Event data={event} key={event.id} />
-        ))}
-      </ul>
-      <div>
-        <button onClick={handlePrevPage} disabled={currentPage === 1}>
-          Previous
-        </button>
-        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-          Next
-        </button>
-      </div>
+      {loading ? (
+        <span>Loading...</span>
+      ) : (
+        <>
+          <ul>
+            {currentEvents.map((event) => (
+              <Event data={event} key={event.id} />
+            ))}
+          </ul>
+          <div>
+            <button onClick={handlePrevPage} disabled={currentPage === 1}>
+              Previous
+            </button>
+            <button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };

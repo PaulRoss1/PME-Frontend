@@ -1,24 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./cart.css";
 import { EventContext } from "../../context/event-context";
 import { useNavigate } from "react-router-dom";
 import { CartItem } from "./cart-item";
 
+let totalAmount;
+
 export const Cart = () => {
-  const { events, cartItems, getTotalCartAmount, loading, setLoading } =
-    useContext(EventContext);
+  const { events, cartItems, getTotalCartAmount } = useContext(EventContext);
 
-  const totalAmount = getTotalCartAmount();
+  useEffect(() => {
+    totalAmount = events.length > 0 ? getTotalCartAmount() : 0;
+  }, [events, cartItems]);
+
   const navigate = useNavigate();
-
-  if (loading) {
-    setLoading(false);
-    return <div>Loading...</div>; // Display loading state
-  }
 
   return (
     <>
-      {totalAmount > 0 ? (
+      {1 < 0 ? (
+        <h1>your cart is empty</h1>
+      ) : (
         <>
           <div className="cart">
             <div>
@@ -35,14 +36,12 @@ export const Cart = () => {
 
           <div className="checkout">
             <p>Subtotal: ${totalAmount}</p>
-            <button onClick={() => navigate("/")}>
-              Continue Browsing (keep?)
-            </button>
+            <button onClick={() => navigate("/")}>Continue Browsing</button>
             <button>checkout</button>
           </div>
+
+          <br />
         </>
-      ) : (
-        <h1>your cart is empty</h1>
       )}
     </>
   );

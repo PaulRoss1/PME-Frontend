@@ -1,5 +1,4 @@
-import React, { Fragment } from "react";
-import { useState } from "react";
+import React from "react";
 import "./homepage.css";
 import { Link } from "react-router-dom";
 import {
@@ -8,7 +7,6 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
-
 import { useMemo } from "react";
 
 export const Map = ({ data, info }) => {
@@ -22,7 +20,6 @@ export const Map = ({ data, info }) => {
 
   const mapOptions = {
     scrollwheel: false,
-    // zoom: 13,
     disableDefaultUI: true,
     zoomControl: true,
     clickableIcons: false,
@@ -33,10 +30,8 @@ export const Map = ({ data, info }) => {
     ],
   };
 
-  if (!isLoaded) {
-    return <div>Loading...</div>;
-  } else {
-    return (
+  return (
+    isLoaded && (
       <>
         <GoogleMap
           zoom={13}
@@ -88,6 +83,6 @@ export const Map = ({ data, info }) => {
           )}
         </GoogleMap>
       </>
-    );
-  }
+    )
+  );
 };

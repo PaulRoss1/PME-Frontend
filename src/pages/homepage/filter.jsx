@@ -1,12 +1,10 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "./homepage.css";
-
-import { useMemo } from "react";
 
 export const Filter = ({ data }) => {
   const {
+    eventTypeFilter,
     handleEventTypeFilterChange,
-    activeFilter,
     dateFilter,
     handleDateFilterChange,
     searchInput,
@@ -17,19 +15,19 @@ export const Filter = ({ data }) => {
       <div>
         <button
           onClick={() => handleEventTypeFilterChange("all")}
-          className={activeFilter === "all" ? "active" : ""}
+          className={eventTypeFilter === "all" ? "active" : ""}
         >
           All Events
         </button>
         <button
           onClick={() => handleEventTypeFilterChange("djs")}
-          className={activeFilter === "djs" ? "active" : ""}
+          className={eventTypeFilter === "djs" ? "active" : ""}
         >
           DJ's
         </button>
         <button
           onClick={() => handleEventTypeFilterChange("live-music")}
-          className={activeFilter === "live-music" ? "active" : ""}
+          className={eventTypeFilter === "live-music" ? "active" : ""}
         >
           Live Music
         </button>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { Fragment, useContext } from "react";
 import "./event_page.css";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { EventContext } from "../../context/event-context";
@@ -7,26 +7,14 @@ export const EventPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const {
-    events,
-    removeFromCart,
-    cartItems,
-    updateCartItemCount,
-    addToCart,
-    loading,
-    setLoading,
-  } = useContext(EventContext);
+  const { events, removeFromCart, cartItems, updateCartItemCount, addToCart } =
+    useContext(EventContext);
 
-  const selectedEvent = events.find((event) => event.id === parseInt(id));
+  const currentEvent = events.find((event) => event.id === parseInt(id));
 
   const sameDayEvents = events
-    .filter((event) => event.date === selectedEvent.date)
-    .filter((event) => event.id !== selectedEvent.id);
-
-  if (loading) {
-    setLoading(false);
-    return <div>Loading...</div>;
-  }
+    .filter((event) => event.date === currentEvent.date)
+    .filter((event) => event.id !== currentEvent.id);
 
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
@@ -36,19 +24,19 @@ export const EventPage = () => {
 
   return (
     <div>
-      <img src={selectedEvent?.image}></img>
+      <img src={currentEvent?.image}></img>
       <br />
-      {selectedEvent?.name}
+      {currentEvent?.name}
       <br />
-      {selectedEvent?.date}
+      {currentEvent?.date}
       <br />
-      {selectedEvent?.event_type}
+      {currentEvent?.event_type}
       <br />
-      venue: {selectedEvent?.venue}
+      venue: {currentEvent?.venue}
       <br />
-      address: {selectedEvent?.address}
+      address: {currentEvent?.address}
       <br />
-      price: {selectedEvent?.price}
+      price: {currentEvent?.price}
       <br />
       id: {id}
       <br />
@@ -68,10 +56,10 @@ export const EventPage = () => {
 
         {sameDayEvents.length > 0 &&
           sameDayEvents.map((event) => (
-            <>
+            <Fragment key={event.id}>
               <Link to={`/event/${event.id}`}>{event.name}</Link>
               <br />
-            </>
+            </Fragment>
           ))}
       </div>
     </div>
