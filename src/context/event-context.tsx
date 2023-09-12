@@ -1,10 +1,11 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, ReactNode } from "react";
 import axios from "axios";
+import { EventContextType, Events } from "../types";
 
-export const EventContext = createContext(null);
+export const EventContext = createContext<EventContextType | null>(null);
 
-const getDefaultCart = (events) => {
-  let cart = {};
+const getDefaultCart = (events: Events[]): Record<number, number> => {
+  let cart: Record<number, number> = {};
   for (const event of events) {
     cart[event.id] = 0;
   }
@@ -16,9 +17,12 @@ const getInitialState = () => {
   return cart ? JSON.parse(cart) : {};
 };
 
-export const EventContextProvider = (props) => {
-  const [cartItems, setCartItems] = useState(getInitialState);
-  const [events, setEvents] = useState([]);
+export const EventContextProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  const [cartItems, setCartItems] =
+    useState<Record<number, number>>(getInitialState);
+  const [events, setEvents] = useState<Events[]>([]);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
@@ -35,6 +39,7 @@ export const EventContextProvider = (props) => {
       );
       const fetchedEvents = response.data;
       setEvents(fetchedEvents);
+
       if (Object.keys(cartItems).length === 0) {
         setCartItems(getDefaultCart(fetchedEvents));
       }
@@ -43,15 +48,15 @@ export const EventContextProvider = (props) => {
     }
   };
 
-  const addToCart = (id) => {
+  const addToCart = (id: number) => {
     setCartItems((prev) => ({ ...prev, [id]: prev[id] + 1 }));
   };
 
-  const removeFromCart = (id) => {
+  const removeFromCart = (id: number) => {
     setCartItems((prev) => ({ ...prev, [id]: prev[id] - 1 }));
   };
 
-  const updateCartItemCount = (newAmount, id) => {
+  const updateCartItemCount = (newAmount: number, id: number) => {
     setCartItems((prev) => ({ ...prev, [id]: newAmount }));
   };
 
@@ -65,7 +70,7 @@ export const EventContextProvider = (props) => {
 
   return (
     <EventContext.Provider value={contextValue}>
-      {props.children}
+      {children}
     </EventContext.Provider>
   );
 };

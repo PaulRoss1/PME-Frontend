@@ -4,9 +4,10 @@ import axios from "axios";
 import { Map } from "./map";
 import { Filter } from "./filter";
 import { Event } from "./event";
+import { Events } from "../../types";
 
 export const Homepage = () => {
-  const [displayedEvents, setDisplayedEvents] = useState([]);
+  const [displayedEvents, setDisplayedEvents] = useState<Events[]>([]);
   const [eventTypeFilter, setEventTypeFilter] = useState("all");
   const [dateFilter, setDateFilter] = useState("whole-period");
   const [searchInput, setSearchInput] = useState("");
@@ -30,7 +31,7 @@ export const Homepage = () => {
       }
 
       const response = await axios.get(url);
-      let filteredEvents = response.data;
+      let filteredEvents: Events[] = response.data;
 
       if (dateFilter === "today") {
         const today = new Date().toISOString().split("T")[0];
@@ -82,19 +83,19 @@ export const Homepage = () => {
     }
   };
 
-  const handleEventTypeFilterChange = (filterOption) => {
+  const handleEventTypeFilterChange = (filterOption: string) => {
     setSelectedEvent(null);
     setEventTypeFilter(filterOption);
     setCurrentPage(1);
   };
 
-  const handleDateFilterChange = (filterOption) => {
+  const handleDateFilterChange = (filterOption: string) => {
     setSelectedEvent(null);
     setDateFilter(filterOption);
     setCurrentPage(1);
   };
 
-  const handleSearchInputChange = (e) => {
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
     setCurrentPage(1);
     setSelectedEvent(null);

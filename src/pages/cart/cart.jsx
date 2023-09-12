@@ -13,7 +13,7 @@ export const Cart = () => {
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
         let itemInfo = events.find((event) => event.id === Number(item));
-        total += cartItems[item] * itemInfo.price;
+        total += cartItems[item] * itemInfo?.price;
       }
     }
     setTotalAmount(total);
