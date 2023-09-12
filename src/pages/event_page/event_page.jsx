@@ -38,7 +38,7 @@ export const EventPage = () => {
       <br />
       price: {currentEvent?.price}
       <br />
-      id: {id}
+      id:: {id}
       <br />
       <div className="countHandler">
         <button onClick={() => cartItems[id] > 0 && removeFromCart(id)}>
