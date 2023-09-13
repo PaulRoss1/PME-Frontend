@@ -8,8 +8,17 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 import { useMemo } from "react";
+import { Events } from "../../types";
 
-export const Map = ({ data, info }) => {
+interface MapProps {
+  data: Events[];
+  info: {
+    selectedEvent: Events | null;
+    setSelectedEvent: React.Dispatch<React.SetStateAction<Events | null>>;
+  };
+}
+
+export const Map = ({ data, info }: MapProps) => {
   const { selectedEvent, setSelectedEvent } = info;
 
   const { isLoaded } = useLoadScript({

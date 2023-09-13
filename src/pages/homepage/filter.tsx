@@ -1,7 +1,18 @@
 import React from "react";
 import "./homepage.css";
 
-export const Filter = ({ data }) => {
+interface FilterProps {
+  data: {
+    eventTypeFilter: string;
+    handleEventTypeFilterChange: (eventType: string) => void;
+    dateFilter: string;
+    handleDateFilterChange: (date: string) => void;
+    searchInput: string;
+    handleSearchInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  };
+}
+
+export const Filter = ({ data }: FilterProps) => {
   const {
     eventTypeFilter,
     handleEventTypeFilterChange,

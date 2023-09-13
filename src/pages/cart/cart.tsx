@@ -3,17 +3,24 @@ import "./cart.css";
 import { EventContext } from "../../context/event-context";
 import { useNavigate } from "react-router-dom";
 import { CartItem } from "./cart-item";
+import { Events } from "../../types";
 
 export const Cart = () => {
-  const { events, cartItems } = useContext(EventContext);
   const [totalAmount, setTotalAmount] = useState(0);
+
+  interface CartContextType {
+    events: Events[];
+    cartItems: Record<number, number>;
+  }
+
+  const { events, cartItems } = useContext(EventContext) as CartContextType;
 
   useEffect(() => {
     let total = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
         let itemInfo = events.find((event) => event.id === Number(item));
-        total += cartItems[item] * itemInfo?.price;
+        itemInfo && (total += cartItems[item] * itemInfo.price);
       }
     }
     setTotalAmount(total);

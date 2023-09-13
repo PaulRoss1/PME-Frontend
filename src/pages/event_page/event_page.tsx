@@ -2,24 +2,35 @@ import React, { Fragment, useContext } from "react";
 import "./event_page.css";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { EventContext } from "../../context/event-context";
+import { Events } from "../../types";
 
 export const EventPage = () => {
-  const { id } = useParams();
+  const { id } = useParams<{ id: any }>();
   const navigate = useNavigate();
 
+  interface EventPageContextType {
+    events: Events[];
+    removeFromCart: (id: number) => void;
+    cartItems: Record<number, number>;
+    updateCartItemCount: (newAmount: number, id: number) => void;
+    addToCart: (id: number) => void;
+  }
+
   const { events, removeFromCart, cartItems, updateCartItemCount, addToCart } =
-    useContext(EventContext);
+    useContext(EventContext) as EventPageContextType;
 
-  const currentEvent = events.find((event) => event.id === parseInt(id));
+  const currentEvent = events.find(
+    (event: { id: number }) => event.id === parseInt(id as string)
+  );
 
-  const sameDayEvents = events
-    .filter((event) => event.date === currentEvent.date)
-    .filter((event) => event.id !== currentEvent.id);
+  const sameDayEvents: Events[] = events
+    .filter((event: { date: string }) => event.date === currentEvent?.date)
+    .filter((event: { id: number }) => event.id !== currentEvent?.id);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     const numericValue = inputValue.replace(/[^0-9]/g, "");
-    updateCartItemCount(Number(numericValue), id);
+    updateCartItemCount(Number(numericValue), Number(id));
   };
 
   return (

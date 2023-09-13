@@ -8,7 +8,7 @@ export interface Events {
   date: string;
   lat_long: string;
   image: string;
-  price: string;
+  price: number;
 }
 
 export interface EventContextType {

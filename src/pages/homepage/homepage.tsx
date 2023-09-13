@@ -12,7 +12,7 @@ export const Homepage = () => {
   const [dateFilter, setDateFilter] = useState("whole-period");
   const [searchInput, setSearchInput] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [selectedEvent, setSelectedEvent] = useState<Events | null>(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {

@@ -2,7 +2,16 @@ import React from "react";
 import "./homepage.css";
 import { Link } from "react-router-dom";
 
-export const Event = (props) => {
+interface EventProps {
+  data: {
+    id: number;
+    name: string;
+    event_type: string;
+    date: string;
+  };
+}
+
+export const Event = (props: EventProps) => {
   const { id, name, event_type, date } = props.data;
   return (
     <div>
