@@ -3,6 +3,9 @@ import "./event_page.css";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { EventContext } from "../../context/event-context";
 import { Events } from "../../types";
+import Container from "react-bootstrap/esm/Container";
+import Row from "react-bootstrap/esm/Row";
+import { Event } from "../../pages/homepage/event";
 
 export const EventPage = () => {
   const { id } = useParams<{ id: any }>();
@@ -34,44 +37,59 @@ export const EventPage = () => {
   };
 
   return (
-    <div>
-      <img src={currentEvent?.image}></img>
-      <br />
-      {currentEvent?.name}
-      <br />
-      {currentEvent?.date}
-      <br />
-      {currentEvent?.event_type}
-      <br />
-      venue: {currentEvent?.venue}
-      <br />
-      address: {currentEvent?.address}
-      <br />
-      price: {currentEvent?.price}
-      <br />
-      id:: {id}
-      <br />
-      <div className="countHandler">
-        <button onClick={() => cartItems[id] > 0 && removeFromCart(id)}>
-          -
+    <div className="event-page">
+      <button onClick={() => navigate("/")}>Back</button>
+
+      <div className="event-info">
+        <div className="img">
+          <img src={currentEvent?.image}></img>
+        </div>
+        <br />
+        <h2>{currentEvent?.name}</h2>
+        <br />
+        {currentEvent?.event_type}
+        <br />
+        Date: {currentEvent?.date}
+        <br />
+        Venue: {currentEvent?.venue}
+        <br />
+        Address: {currentEvent?.address}
+        <br />
+        Price: {currentEvent?.price}
+        <br />
+        <div className="countHandler">
+          <button onClick={() => cartItems[id] > 0 && removeFromCart(id)}>
+            -
+          </button>
+          <input value={cartItems[id]} onChange={handleInputChange} />
+          <button onClick={() => addToCart(id)}>+</button>
+        </div>
+        <button
+          onClick={() => navigate("/cart")}
+          disabled={cartItems[id] === 0}
+        >
+          Buy tickets
         </button>
-        <input value={cartItems[id]} onChange={handleInputChange} />
-        <button onClick={() => addToCart(id)}>+</button>
       </div>
-      <button onClick={() => navigate("/cart")} disabled={cartItems[id] === 0}>
-        Buy tickets
-      </button>
-      <div>
+      <div className="more-events">
         <br />
         {sameDayEvents.length > 0 && <h2>more events on this day</h2>}
 
-        {sameDayEvents.length > 0 &&
+        <Container>
+          <Row>
+            {sameDayEvents.map((event) => (
+              <Event data={event} key={event.id} />
+            ))}
+          </Row>
+        </Container>
+
+        {/* {sameDayEvents.length > 0 &&
           sameDayEvents.map((event) => (
             <Fragment key={event.id}>
               <Link to={`/event/${event.id}`}>{event.name}</Link>
               <br />
             </Fragment>
-          ))}
+          ))} */}
       </div>
     </div>
   );
