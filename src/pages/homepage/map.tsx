@@ -18,7 +18,7 @@ interface MapProps {
   };
 }
 
-export const Map = ({ data, info }: MapProps) => {
+export const EventsMap = ({ data, info }: MapProps) => {
   const { selectedEvent, setSelectedEvent } = info;
 
   const { isLoaded } = useLoadScript({
@@ -38,9 +38,8 @@ export const Map = ({ data, info }: MapProps) => {
       },
     ],
   };
-
-  return (
-    isLoaded && (
+  if (isLoaded) {
+    return (
       <>
         <GoogleMap
           zoom={13}
@@ -92,6 +91,8 @@ export const Map = ({ data, info }: MapProps) => {
           )}
         </GoogleMap>
       </>
-    )
-  );
+    );
+  } else {
+    return <></>;
+  }
 };

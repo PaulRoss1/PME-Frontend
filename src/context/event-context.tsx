@@ -35,7 +35,8 @@ export const EventContextProvider: React.FC<{ children: ReactNode }> = ({
   const fetchEvents = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/v1/events/all/"
+        // "http://127.0.0.1:8000/api/v1/events/all/"
+        "https://mock-api-ti6s.vercel.app/all"
       );
       const fetchedEvents = response.data;
       setEvents(fetchedEvents);

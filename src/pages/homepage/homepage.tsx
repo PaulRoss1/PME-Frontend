@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./homepage.css";
 import axios from "axios";
-import { Map } from "./map";
+import { EventsMap } from "./map";
 import { Filter } from "./filter";
 import { Event } from "./event";
 import { Events } from "../../types";
@@ -22,12 +22,15 @@ export const Homepage = () => {
   const fetchEvents = async () => {
     setLoading(true);
     try {
-      let url = "http://127.0.0.1:8000/api/v1/events/all/";
+      // let url = "http://127.0.0.1:8000/api/v1/events/all/";
+      let url = "https://mock-api-ti6s.vercel.app/all";
 
       if (eventTypeFilter === "djs") {
-        url = "http://127.0.0.1:8000/api/v1/events/djs/";
+        // url = "http://127.0.0.1:8000/api/v1/events/djs/";
+        url = "https://mock-api-ti6s.vercel.app/djs";
       } else if (eventTypeFilter === "live-music") {
-        url = "http://127.0.0.1:8000/api/v1/events/live-music/";
+        // url = "http://127.0.0.1:8000/api/v1/events/live-music/";
+        url = "https://mock-api-ti6s.vercel.app/live-music";
       }
 
       const response = await axios.get(url);
@@ -120,7 +123,10 @@ export const Homepage = () => {
 
   return (
     <div>
-      <Map data={displayedEvents} info={{ selectedEvent, setSelectedEvent }} />
+      <EventsMap
+        data={displayedEvents}
+        info={{ selectedEvent, setSelectedEvent }}
+      />
       <Filter
         data={{
           eventTypeFilter,
