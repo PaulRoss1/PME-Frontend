@@ -1,4 +1,58 @@
-.navbar {
-  outline: 2px solid red;
-  padding: 20px;
+.pme-navbar {
+  /* outline: 2px solid red; */
+  /* padding: 20px; */
+
+  height: 195px;
+  background-color: #333333;
+  padding-top: 20px;
+
+  text-align: center;
+}
+
+@media (min-width: 480px) {
+  .pme-navbar {
+    text-align: initial;
+  }
+}
+
+.navbar__header {
+  font-size: 25px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-decoration: none;
+  /* padding-left: 5%; */
+}
+
+@media (min-width: 480px) {
+  .navbar__header {
+    font-size: 30px;
+    padding-left: 5%;
+  }
+}
+
+.navbar__header span {
+  color: #e5091c;
+}
+
+.navbar__slogan {
+  font-size: clamp(35px, 4vw, 52px);
+  max-width: 90%;
+  margin: auto;
+  text-align: center;
+  font-weight: 300;
+  color: #ffffff;
+  padding-top: 22px;
+}
+
+.navbar__slogan span {
+  font-weight: 700;
+}
+
+.navbar__cart {
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  margin-right: 5%;
+  cursor: pointer;
 }

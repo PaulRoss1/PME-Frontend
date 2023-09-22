@@ -6,6 +6,10 @@ import { Filter } from "./filter";
 import { Event } from "./event";
 import { Events } from "../../types";
 
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 export const Homepage = () => {
   const [displayedEvents, setDisplayedEvents] = useState<Events[]>([]);
   const [eventTypeFilter, setEventTypeFilter] = useState("all");
@@ -104,7 +108,7 @@ export const Homepage = () => {
     setSelectedEvent(null);
   };
 
-  const eventsPerPage = 5;
+  const eventsPerPage = 15;
   const totalPages = Math.ceil(displayedEvents.length / eventsPerPage);
   const indexOfLastEvent = currentPage * eventsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
@@ -140,13 +144,17 @@ export const Homepage = () => {
       {loading ? (
         <span>Loading...</span>
       ) : (
-        <>
-          <ul>
-            {currentEvents.map((event) => (
-              <Event data={event} key={event.id} />
-            ))}
-          </ul>
-          <div>
+        <div className="events-section">
+          <div className="events-cards">
+            <Container>
+              <Row>
+                {currentEvents.map((event) => (
+                  <Event data={event} key={event.id} />
+                ))}
+              </Row>
+            </Container>
+          </div>
+          <div className="prev_next">
             <button onClick={handlePrevPage} disabled={currentPage === 1}>
               Previous
             </button>
@@ -157,7 +165,7 @@ export const Homepage = () => {
               Next
             </button>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

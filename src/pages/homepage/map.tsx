@@ -38,6 +38,7 @@ export const EventsMap = ({ data, info }: MapProps) => {
       },
     ],
   };
+
   if (isLoaded) {
     return (
       <>

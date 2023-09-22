@@ -7,10 +7,16 @@ export const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="navbar">
-      <Link to="/">Prague Music Events</Link>
-      <h1>Find the next event you'll want to attend.</h1>
-      <button onClick={() => navigate("/cart")}>Cart</button>
+    <div className="pme-navbar">
+      <Link to="/" className="navbar__header">
+        Prague <span>Music</span> Events
+      </Link>
+      <h1 className="navbar__slogan">
+        Find the <span>next event</span> you'll want <span>to attend.</span>
+      </h1>
+      <button className="navbar__cart" onClick={() => navigate("/cart")}>
+        Cart
+      </button>
     </div>
   );
 };
