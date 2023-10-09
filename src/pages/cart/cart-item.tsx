@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./cart.css";
+// import "./cart.css";
 import { EventContext } from "../../context/event-context";
 import { Link } from "react-router-dom";
+
+import Col from "react-bootstrap/Col";
+import { formatDate } from "../../helpers/helperFunctions";
 
 interface CartItemProps {
   data: {
@@ -11,11 +14,12 @@ interface CartItemProps {
     price: number;
     venue: string;
     date: string;
+    event_type: string;
   };
 }
 
 export const CartItem = (props: CartItemProps) => {
-  const { id, name, image, price, venue, date } = props.data;
+  const { id, name, image, price, venue, date, event_type } = props.data;
 
   interface CartItemContextType {
     cartItems: Record<number, number>;
@@ -34,22 +38,23 @@ export const CartItem = (props: CartItemProps) => {
   };
 
   return (
-    <div className="cartItem">
-      <img src={image} alt="" />
-      <div className="description">
-        <Link to={`/event/${id}`}>{name}</Link>
-        <p>
-          {venue}, {date}
-        </p>
-        <p>Price: {price}</p>
-        <div className="countHandler">
-          <button onClick={() => removeFromCart(id)}>-</button>
-          <input value={cartItems[id]} onChange={handleInputChange} />
-          <button onClick={() => addToCart(id)}>+</button>
-        </div>
+    <Col md={6} xs={12} className="pme-cart__item">
+      <img className="pme-cart__item-image" src={image} alt="" />
+      <Link className="pme-cart__item-title" to={`/event/${id}`}>
+        {name}
+      </Link>
+      <span className="pme-cart__item-info">
+        {event_type}, {formatDate(date)}
+      </span>
+      <span className="pme-cart__item-venue">Venue: {venue}</span>
+      <span className="pme-cart__item-price">
+        Price: <span>{price} Kč</span>
+      </span>
+      <div className="pme-cart__item-input">
+        <button onClick={() => removeFromCart(id)}>-</button>
+        <input value={cartItems[id]} onChange={handleInputChange} />
+        <button onClick={() => addToCart(id)}>+</button>
       </div>
-      <br />
-      <hr />
-    </div>
+    </Col>
   );
 };

@@ -1,11 +1,12 @@
 import React, { Fragment, useContext } from "react";
-import "./event_page.css";
+import "./event_page.scss";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { EventContext } from "../../context/event-context";
 import { Events } from "../../types";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import { Event } from "../../pages/homepage/event";
+import { formatDate } from "../../helpers/helperFunctions";
 
 export const EventPage = () => {
   const { id } = useParams<{ id: any }>();
@@ -37,59 +38,65 @@ export const EventPage = () => {
   };
 
   return (
-    <div className="event-page">
-      <button onClick={() => navigate("/")}>Back</button>
-
-      <div className="event-info">
-        <div className="img">
-          <img src={currentEvent?.image}></img>
-        </div>
-        <br />
-        <h2>{currentEvent?.name}</h2>
-        <br />
-        {currentEvent?.event_type}
-        <br />
-        Date: {currentEvent?.date}
-        <br />
-        Venue: {currentEvent?.venue}
-        <br />
-        Address: {currentEvent?.address}
-        <br />
-        Price: {currentEvent?.price}
-        <br />
-        <div className="countHandler">
-          <button onClick={() => cartItems[id] > 0 && removeFromCart(id)}>
-            -
-          </button>
-          <input value={cartItems[id]} onChange={handleInputChange} />
-          <button onClick={() => addToCart(id)}>+</button>
-        </div>
-        <button
-          onClick={() => navigate("/cart")}
-          disabled={cartItems[id] === 0}
-        >
-          Buy tickets
-        </button>
+    <div className="pme-event-page">
+      <div className="pme-event-page__image">
+        <img src={currentEvent?.image}></img>
       </div>
-      <div className="more-events">
-        <br />
-        {sameDayEvents.length > 0 && <h2>more events on this day</h2>}
 
-        <Container>
-          <Row>
-            {sameDayEvents.map((event) => (
-              <Event data={event} key={event.id} />
-            ))}
-          </Row>
-        </Container>
+      <div className="pme-event-page__container">
+        {/* <button onClick={() => navigate("/")}>Back</button> */}
 
-        {/* {sameDayEvents.length > 0 &&
-          sameDayEvents.map((event) => (
-            <Fragment key={event.id}>
-              <Link to={`/event/${event.id}`}>{event.name}</Link>
-              <br />
-            </Fragment>
-          ))} */}
+        <div className="pme-event-page__content">
+          <h2 className="pme-event-page__title">{currentEvent?.name}</h2>
+          <div className="pme-event-page__info">
+            <span>Date: {formatDate(currentEvent?.date)}</span>
+
+            <span>{currentEvent?.event_type}</span>
+
+            <span>Venue: {currentEvent?.venue}</span>
+          </div>
+          <span className="pme-event-page__address">
+            Address: {currentEvent?.address}
+          </span>
+          <span className="pme-event-page__price">
+            Price: {currentEvent?.price} Kč
+          </span>
+
+          <div className="pme-event-page__tickets">
+            <div className="pme-event-page__input">
+              <button onClick={() => cartItems[id] > 0 && removeFromCart(id)}>
+                -
+              </button>
+              <input value={cartItems[id]} onChange={handleInputChange} />
+              <button onClick={() => addToCart(id)}>+</button>
+            </div>
+            <button
+              className="pme-event-page__buy"
+              onClick={() => navigate("/cart")}
+              disabled={cartItems[id] === 0}
+            >
+              Buy Tickets
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="pme-event-page__more-container">
+        <div className="pme-event-page__more">
+          {sameDayEvents.length > 0 && (
+            <h2>
+              MORE <span className="pme-event-page__more-span">EVENTS</span> ON{" "}
+              {formatDate(currentEvent?.date)}
+            </h2>
+          )}
+
+          <Container>
+            <Row>
+              {sameDayEvents.map((event) => (
+                <Event data={event} key={event.id} />
+              ))}
+            </Row>
+          </Container>
+        </div>
       </div>
     </div>
   );

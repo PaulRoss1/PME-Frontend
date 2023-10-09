@@ -1,9 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./cart.css";
+import "./cart.scss";
 import { EventContext } from "../../context/event-context";
 import { useNavigate } from "react-router-dom";
 import { CartItem } from "./cart-item";
 import { Events } from "../../types";
+
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
 export const Cart = () => {
   const [totalAmount, setTotalAmount] = useState(0);
@@ -34,26 +37,35 @@ export const Cart = () => {
         <h1>your cart is empty</h1>
       ) : (
         <>
-          <div className="cart">
+          <div className="pme-cart">
             <div>
-              <h1>Cart Items</h1>
+              <h2 className="pme-cart__title">Cart Items</h2>
             </div>
-            <div className="cartItems">
-              {events.map((event) => {
-                if (cartItems[event.id] !== 0) {
-                  return <CartItem data={event} key={event.id} />;
-                }
-              })}
+            <div className="pme-cart__items">
+              <Container>
+                <Row>
+                  {events.map((event) => {
+                    if (cartItems[event.id] !== 0) {
+                      return <CartItem data={event} key={event.id} />;
+                    }
+                  })}
+                </Row>
+              </Container>
             </div>
           </div>
 
-          <div className="checkout">
-            <p>Subtotal: ${totalAmount}</p>
-            <button onClick={() => navigate("/")}>Continue Browsing</button>
-            <button>checkout</button>
+          <div className="pme-cart__checkout">
+            <span className="pme-cart__subtotal">
+              Subtotal: <span>{totalAmount} Kč</span>
+            </span>
+            <button
+              className="pme-cart__continue"
+              onClick={() => navigate("/")}
+            >
+              Continue Browsing
+            </button>
+            <button className="pme-cart__checkout-btn">Checkout</button>
           </div>
-
-          <br />
         </>
       )}
     </>

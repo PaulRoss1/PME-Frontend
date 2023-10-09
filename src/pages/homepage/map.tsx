@@ -1,5 +1,5 @@
 import React from "react";
-import "./homepage.css";
+// import "./homepage.scss";
 import { Link } from "react-router-dom";
 import {
   GoogleMap,
@@ -41,12 +41,12 @@ export const EventsMap = ({ data, info }: MapProps) => {
 
   if (isLoaded) {
     return (
-      <>
+      <div className="pme-map">
         <GoogleMap
           zoom={13}
           center={center}
           options={mapOptions}
-          mapContainerClassName="map-container"
+          mapContainerClassName="pme-map__container"
         >
           {data.map((event) => (
             <Marker
@@ -67,7 +67,11 @@ export const EventsMap = ({ data, info }: MapProps) => {
               onCloseClick={() => setSelectedEvent(null)}
             >
               <>
-                <div className="info-window">
+                <span className="pme-map__info-venue">
+                  {selectedEvent.venue}
+                  <hr />
+                </span>
+                <div className="pme-map__info-window">
                   {data
                     .filter(
                       (event) => event.lat_long === selectedEvent.lat_long
@@ -76,7 +80,7 @@ export const EventsMap = ({ data, info }: MapProps) => {
                       <>
                         <Link
                           key={event.id}
-                          className="info-details"
+                          className="pme-map__info-details"
                           to={`/event/${event.id}`}
                         >
                           {`${event.date.split("-")[2]}.${
@@ -91,7 +95,7 @@ export const EventsMap = ({ data, info }: MapProps) => {
             </InfoWindow>
           )}
         </GoogleMap>
-      </>
+      </div>
     );
   } else {
     return <></>;

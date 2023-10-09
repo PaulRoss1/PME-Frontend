@@ -1,5 +1,5 @@
 import React from "react";
-import "./homepage.css";
+// import "./homepage.scss";
 
 interface FilterProps {
   data: {
@@ -23,50 +23,52 @@ export const Filter = ({ data }: FilterProps) => {
   } = data;
   return (
     <>
-      <div className="event-filter">
-        <div className="left">
+      <div className="pme-filter">
+        <div className="pme-filter__buttons">
           <button
             onClick={() => handleEventTypeFilterChange("all")}
-            className={`filter__text ${
-              eventTypeFilter === "all" ? "active" : ""
+            className={`pme-filter__button ${
+              eventTypeFilter === "all" ? "pme-filter__button-active" : ""
             }`}
           >
-            All
+            ALL
           </button>
           <button
             onClick={() => handleEventTypeFilterChange("djs")}
-            className={`filter__text ${
-              eventTypeFilter === "djs" ? "active" : ""
+            className={`pme-filter__button ${
+              eventTypeFilter === "djs" ? "pme-filter__button-active" : ""
             }`}
           >
-            DJ's
+            DJ<span>'</span>s
           </button>
           <button
             onClick={() => handleEventTypeFilterChange("live-music")}
-            className={`filter__text ${
-              eventTypeFilter === "live-music" ? "active" : ""
+            className={`pme-filter__button ${
+              eventTypeFilter === "live-music"
+                ? "pme-filter__button-active"
+                : ""
             }`}
           >
-            Live Music
+            LIVE MUSIC
           </button>
-          <div className="filter__select">
+          <div className="pme-filter__dropdown">
             <select
-              className="filter__select-text"
+              className="pme-filter__dropdown-text"
               value={dateFilter}
               onChange={(e) => handleDateFilterChange(e.target.value)}
             >
-              <option value="whole-period">Whole Period</option>
-              <option value="today">Today</option>
-              <option value="tomorrow">Tomorrow</option>
-              <option value="this-week">This Week</option>
-              <option value="this-weekend">This Weekend</option>
+              <option value="whole-period">WHOLE PERIOD</option>
+              <option value="today">TODAY</option>
+              <option value="tomorrow">TOMORROW</option>
+              <option value="this-week">THIS WEEK</option>
+              <option value="this-weekend">THIS WEEKEND</option>
             </select>
           </div>
         </div>
-        <div className="filter__search">
+        <div className="pme-filter__input">
           <input
             type="text"
-            placeholder="Search.."
+            placeholder="SEARCH"
             value={searchInput}
             onChange={handleSearchInputChange}
           />

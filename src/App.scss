@@ -1,0 +1,25 @@
+.App {
+  /* text-align: center; */
+  font-family: "Ubuntu", sans-serif;
+}
+
+@font-face {
+  font-family: "Gilroy-Bold";
+  src: url("../src/fonts/gilroy/Gilroy-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gilroy-SemiBold";
+  src: url("../src/fonts/gilroy/Gilroy-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gilroy-Regular";
+  src: url("../src/fonts/gilroy/Gilroy-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Demo-Bebas";
+  src: url("../src/fonts/Demo-Bebas-Neue-Pro/Demo_Fonts/Fontspring-DEMO-bebasneuepro-regular.otf")
+    format("truetype");
+}

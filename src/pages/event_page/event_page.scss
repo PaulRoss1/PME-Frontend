@@ -1,0 +1,134 @@
+$red: #e5091c;
+$grey: #333333;
+
+.pme-event-page {
+  &__image {
+    margin-bottom: 50px;
+    margin: auto;
+    display: flex;
+    justify-content: center !important;
+    border-bottom: 5px solid $grey;
+    background-color: $red;
+    // color: $grey;
+
+    img {
+      max-width: 100%;
+      max-width: 700px;
+    }
+  }
+
+  &__container {
+    margin: auto;
+    max-width: 1250px;
+  }
+
+  &__content {
+    text-align: center;
+    padding-top: 46px;
+    margin-bottom: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 920px;
+    margin: auto;
+    color: #232323;
+  }
+
+  &__title {
+    font-family: Gilroy-Bold;
+    font-size: 40px;
+    margin-top: 4px;
+    margin-bottom: 22px;
+    color: #232323 !important;
+  }
+
+  &__info {
+    font-family: Gilroy-Regular;
+    font-size: 26px;
+    margin-bottom: 11px;
+    display: flex;
+    justify-content: space-around;
+  }
+  &__address {
+    font-family: Gilroy-Regular;
+    font-size: 30px;
+    margin-bottom: 14px;
+  }
+  &__price {
+    display: block;
+    font-family: Gilroy-SemiBold;
+    font-size: 30px;
+    margin-top: 16px;
+    margin-bottom: 30px;
+  }
+  &__tickets {
+    height: 54px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 60px;
+  }
+
+  &__input {
+    margin-right: 30px;
+
+    button {
+      background-color: $red;
+      height: 100%;
+      color: #f4f4f4;
+      border: none;
+      width: 48px;
+      font-size: 20px;
+      font-family: Gilroy-Regular;
+    }
+
+    input {
+      background-color: #f4f4f4;
+      border: none;
+      height: 100%;
+      width: 161px;
+      font-size: 18px;
+      font-family: Gilroy-Regular;
+      padding-left: 14px;
+    }
+  }
+
+  &__buy {
+    border: 2px solid #222222;
+    background-color: #fff;
+    color: #222222;
+
+    font-family: Gilroy-Regular;
+    font-size: 18px;
+    font-weight: 400;
+    // line-height: 21px;
+    // letter-spacing: 0em;
+    // text-align: left;
+  }
+
+  &__more-container {
+    background-color: #f4f4f4;
+    padding-top: 104px;
+  }
+
+  &__more {
+    margin: auto;
+    max-width: 1250px;
+
+    h2 {
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 60px;
+      font-weight: 800;
+      font-family: Demo-Bebas;
+      margin-bottom: 31px;
+    }
+  }
+  &__more-span {
+    text-transform: uppercase;
+    text-align: center;
+    color: $red;
+    font-size: 60px;
+    font-weight: 800;
+    font-family: Demo-Bebas;
+  }
+}

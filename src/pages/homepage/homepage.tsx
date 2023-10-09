@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./homepage.css";
+import "./homepage.scss";
 import axios from "axios";
 import { EventsMap } from "./map";
 import { Filter } from "./filter";
@@ -144,8 +144,8 @@ export const Homepage = () => {
       {loading ? (
         <span>Loading...</span>
       ) : (
-        <div className="events-section">
-          <div className="events-cards">
+        <div className="pme-events">
+          <div className="pme-events__cards">
             <Container>
               <Row>
                 {currentEvents.map((event) => (
@@ -154,15 +154,21 @@ export const Homepage = () => {
               </Row>
             </Container>
           </div>
-          <div className="prev_next">
-            <button onClick={handlePrevPage} disabled={currentPage === 1}>
-              Previous
+
+          <div className="pme-page-buttons">
+            <button
+              className="pme-page-buttons__previous"
+              onClick={handlePrevPage}
+              disabled={currentPage === 1}
+            >
+              PREVIOUS
             </button>
             <button
+              className="pme-page-buttons__next"
               onClick={handleNextPage}
               disabled={currentPage === totalPages}
             >
-              Next
+              NEXT
             </button>
           </div>
         </div>

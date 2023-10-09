@@ -1,0 +1,120 @@
+$red: #e5091c;
+$grey: #333333;
+
+.pme-cart {
+  max-width: 1250px;
+  margin: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  &__title {
+    font-family: Gilroy-Bold;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 45px;
+    margin-bottom: 50px;
+  }
+  &__item {
+    margin-bottom: 20px;
+    outline: 1px solid blue;
+    min-height: 600px;
+  }
+  &__item-image {
+    max-width: 100%;
+  }
+  &__item-title {
+    display: block;
+    font-family: Gilroy-Bold;
+    font-size: 30px;
+    text-decoration: none;
+    line-height: 37px;
+    color: #222222;
+  }
+  &__item-title:hover {
+    color: $red;
+  }
+  &__item-info {
+    display: block;
+    font-family: Gilroy-Regular;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  &__item-venue {
+    display: block;
+    color: $red;
+    font-family: Gilroy-Regular;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  &__item-price {
+    font-family: Gilroy-Regular;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 25px;
+
+    span {
+      color: $red;
+    }
+  }
+
+  &__item-input {
+    // margin-top: 20px;
+
+    button {
+      background-color: $red;
+      height: 100%;
+      color: #f4f4f4;
+      border: none;
+      width: 48px;
+      font-size: 20px;
+      font-family: Gilroy-Regular;
+    }
+
+    input {
+      background-color: #f4f4f4;
+      border: none;
+      height: 100%;
+      width: 161px;
+      font-size: 18px;
+      font-family: Gilroy-Regular;
+      padding-left: 14px;
+    }
+  }
+
+  /////////////////////
+  &__checkout {
+    text-align: center;
+  }
+  &__subtotal {
+    font-family: Gilroy-Regular;
+    font-size: 24px;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 20px;
+
+    span {
+      font-family: Gilroy-Regular;
+      font-size: 24px;
+      font-weight: 700;
+      color: $red;
+    }
+  }
+  &__continue {
+    width: 177px;
+    height: 54px;
+    background-color: $red;
+    font-family: Gilroy-Bold;
+    font-size: 18px;
+    color: #fff;
+    border: none;
+    margin-right: 20px;
+  }
+  &__checkout-btn {
+    width: 177px;
+    height: 54px;
+    border: 2px solid $red;
+    background-color: #fff;
+    font-family: Gilroy-Bold;
+    font-size: 18px;
+  }
+}
