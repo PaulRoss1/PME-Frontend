@@ -2,19 +2,38 @@ $red: #e5091c;
 $grey: #333333;
 
 .pme-event-page {
-  &__image {
+  &__image-section {
     margin-bottom: 50px;
     margin: auto;
     display: flex;
     justify-content: center !important;
     border-bottom: 5px solid $grey;
-    background-color: $red;
+    // background-color: $red;
     // color: $grey;
+
+    position: relative;
+    overflow: hidden;
 
     img {
       max-width: 100%;
       max-width: 700px;
     }
+  }
+  &__blured-background {
+    position: absolute;
+    top: -13px;
+    left: -11px;
+    width: calc(100% + 19px);
+    height: calc(100% + 26px);
+    background-size: cover;
+    background-position: center;
+    background-clip: content-box;
+    filter: blur(7px);
+    z-index: -1;
+  }
+
+  &__info-section {
+    background-color: #fff;
   }
 
   &__container {
@@ -47,6 +66,11 @@ $grey: #333333;
     margin-bottom: 11px;
     display: flex;
     justify-content: space-around;
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
   }
   &__address {
     font-family: Gilroy-Regular;
@@ -85,10 +109,14 @@ $grey: #333333;
       background-color: #f4f4f4;
       border: none;
       height: 100%;
-      width: 161px;
+      width: 100px;
       font-size: 18px;
       font-family: Gilroy-Regular;
       padding-left: 14px;
+
+      @media (min-width: 768px) {
+        width: 161px;
+      }
     }
   }
 

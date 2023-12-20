@@ -5,26 +5,45 @@ $grey: #333333;
   height: 215px;
   background-color: $grey;
   padding-top: 20px;
-  text-align: center;
+  text-align: left;
 
-  @media (min-width: 480px) {
+  @media (min-width: 768px) {
     text-align: initial;
   }
 
   &__logo {
-    font-size: 25px;
+    display: none;
+
+    @media (min-width: 768px) {
+      display: initial;
+      font-size: 26px;
+      padding-left: 5%;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    span {
+      color: $red;
+    }
+  }
+
+  &__logo-mobile {
+    font-size: 26px;
     font-weight: 900;
     text-transform: uppercase;
     color: #ffffff;
     text-decoration: none;
+    margin-left: 15px;
 
     span {
       color: $red;
     }
 
-    @media (min-width: 480px) {
-      font-size: 26px;
-      padding-left: 5%;
+    @media (min-width: 768px) {
+      display: none;
+      margin-left: 0;
     }
   }
 
@@ -43,27 +62,44 @@ $grey: #333333;
   }
 
   &__cart {
-    width: 167px;
-    height: 44px;
-    border: none;
-    background-color: $red;
-    position: absolute;
-    right: 10px;
-    top: 17px;
-    margin-right: 5%;
-    cursor: pointer;
-    color: #ffffff;
-    font-size: 20px;
-    font-family: Demo-Bebas;
-
-    transition: 300ms ease all;
+    display: none;
 
     // background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31" fill="none"><line y1="-0.25" x2="31" y2="-0.25" transform="matrix(4.37114e-08 1 1 -4.37114e-08 0.533081 0)" stroke="white" stroke-width="0.5"/><line x1="30.0661" y1="0.25" x2="-1.14598e-05" y2="0.249996" stroke="white" stroke-width="0.5"/></svg>')
     //   center center no-repeat;
     // background-size: cover;
 
+    @media (min-width: 768px) {
+      display: initial;
+      width: 167px;
+      height: 44px;
+      border: none;
+      background-color: $red;
+      position: absolute;
+      right: 10px;
+      top: 17px;
+      margin-right: 5%;
+      cursor: pointer;
+      color: #ffffff;
+      font-size: 20px;
+      font-family: Demo-Bebas;
+
+      transition: 300ms ease all;
+    }
+
     span {
       font-family: Gilroy-Regular;
+      font-size: 18px;
+    }
+  }
+
+  &__cart-mobile {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    cursor: pointer;
+
+    @media (min-width: 768px) {
+      display: none;
     }
   }
 
@@ -81,7 +117,7 @@ $grey: #333333;
     height: 100%;
   }
 
-  &__cart svg:nth-child(3) {
+  &__cart svg:nth-child(2) {
     position: absolute;
     top: 7px;
     left: -64px;
@@ -89,7 +125,7 @@ $grey: #333333;
     height: 57%;
   }
 
-  &__cart svg:nth-child(4) {
+  &__cart svg:nth-child(3) {
     position: absolute;
     bottom: 7px;
     left: 132px;

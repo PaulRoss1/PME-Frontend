@@ -22,7 +22,7 @@ export const EventsMap = ({ data, info }: MapProps) => {
   const { selectedEvent, setSelectedEvent } = info;
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyAboZdZ_AdxzOhLELaETrg5r1wy9lYo--8",
+    googleMapsApiKey: "AIzaSyBBZiKuuA8FmadX6VdaVcIodJMH-ZUEBLY",
   });
 
   const center = useMemo(() => ({ lat: 50.0755, lng: 14.4378 }), []);
@@ -77,9 +77,8 @@ export const EventsMap = ({ data, info }: MapProps) => {
                       (event) => event.lat_long === selectedEvent.lat_long
                     )
                     .map((event) => (
-                      <>
+                      <div key={event.id}>
                         <Link
-                          key={event.id}
                           className="pme-map__info-details"
                           to={`/event/${event.id}`}
                         >
@@ -88,7 +87,7 @@ export const EventsMap = ({ data, info }: MapProps) => {
                           }. ${event.name}`}
                         </Link>
                         <br />
-                      </>
+                      </div>
                     ))}
                 </div>
               </>

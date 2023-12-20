@@ -14,11 +14,16 @@ export const Cart = () => {
   interface CartContextType {
     events: Events[];
     cartItems: Record<number, number>;
+    loading: boolean;
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   }
 
-  const { events, cartItems } = useContext(EventContext) as CartContextType;
+  const { events, cartItems, loading, setLoading } = useContext(
+    EventContext
+  ) as unknown as CartContextType;
 
   useEffect(() => {
+    setLoading(true);
     let total = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
@@ -31,10 +36,17 @@ export const Cart = () => {
 
   const navigate = useNavigate();
 
-  return (
+  return events.length === 0 ? (
+    <span className="pme-events__loading"></span>
+  ) : (
     <>
-      {1 < 0 ? (
-        <h1>your cart is empty</h1>
+      {totalAmount == 0 ? (
+        <div className="pme-cart__empty">
+          <h2>xxx your cart is empty</h2>
+          <button className="pme-cart__continue" onClick={() => navigate("/")}>
+            Continue Browsing
+          </button>
+        </div>
       ) : (
         <>
           <div className="pme-cart">

@@ -40,20 +40,24 @@ export const CartItem = (props: CartItemProps) => {
   return (
     <Col md={6} xs={12} className="pme-cart__item">
       <img className="pme-cart__item-image" src={image} alt="" />
-      <Link className="pme-cart__item-title" to={`/event/${id}`}>
-        {name}
-      </Link>
-      <span className="pme-cart__item-info">
-        {event_type}, {formatDate(date)}
-      </span>
-      <span className="pme-cart__item-venue">Venue: {venue}</span>
-      <span className="pme-cart__item-price">
-        Price: <span>{price} Kč</span>
-      </span>
-      <div className="pme-cart__item-input">
-        <button onClick={() => removeFromCart(id)}>-</button>
-        <input value={cartItems[id]} onChange={handleInputChange} />
-        <button onClick={() => addToCart(id)}>+</button>
+      <div className="TWO">
+        <div className="ONE">
+          <Link className="pme-cart__item-title" to={`/event/${id}`}>
+            {name}
+          </Link>
+          <span className="pme-cart__item-info">
+            {event_type}, {formatDate(date)}
+          </span>
+          <span className="pme-cart__item-venue">Venue: {venue}</span>
+          <span className="pme-cart__item-price">
+            Price: <span>{price} Kč</span>
+          </span>
+        </div>
+        <div className="pme-cart__item-input">
+          <button onClick={() => removeFromCart(id)}>-</button>
+          <input value={cartItems[id]} onChange={handleInputChange} />
+          <button onClick={() => addToCart(id)}>+</button>
+        </div>
       </div>
     </Col>
   );

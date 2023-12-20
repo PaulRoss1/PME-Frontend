@@ -1,12 +1,13 @@
 import React from "react";
+import { EventTypeEnum, DateEnum } from "./homepage";
 // import "./homepage.scss";
 
 interface FilterProps {
   data: {
     eventTypeFilter: string;
-    handleEventTypeFilterChange: (eventType: string) => void;
+    handleEventTypeFilterChange: (eventType: EventTypeEnum) => void;
     dateFilter: string;
-    handleDateFilterChange: (date: string) => void;
+    handleDateFilterChange: (date: DateEnum) => void;
     searchInput: string;
     handleSearchInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
@@ -26,25 +27,29 @@ export const Filter = ({ data }: FilterProps) => {
       <div className="pme-filter">
         <div className="pme-filter__buttons">
           <button
-            onClick={() => handleEventTypeFilterChange("all")}
+            onClick={() => handleEventTypeFilterChange(EventTypeEnum.All)}
             className={`pme-filter__button ${
-              eventTypeFilter === "all" ? "pme-filter__button-active" : ""
+              eventTypeFilter === EventTypeEnum.All
+                ? "pme-filter__button-active"
+                : ""
             }`}
           >
             ALL
           </button>
           <button
-            onClick={() => handleEventTypeFilterChange("djs")}
+            onClick={() => handleEventTypeFilterChange(EventTypeEnum.DJs)}
             className={`pme-filter__button ${
-              eventTypeFilter === "djs" ? "pme-filter__button-active" : ""
+              eventTypeFilter === EventTypeEnum.DJs
+                ? "pme-filter__button-active"
+                : ""
             }`}
           >
             DJ<span>'</span>s
           </button>
           <button
-            onClick={() => handleEventTypeFilterChange("live-music")}
+            onClick={() => handleEventTypeFilterChange(EventTypeEnum.LiveMusic)}
             className={`pme-filter__button ${
-              eventTypeFilter === "live-music"
+              eventTypeFilter === EventTypeEnum.LiveMusic
                 ? "pme-filter__button-active"
                 : ""
             }`}
@@ -55,7 +60,9 @@ export const Filter = ({ data }: FilterProps) => {
             <select
               className="pme-filter__dropdown-text"
               value={dateFilter}
-              onChange={(e) => handleDateFilterChange(e.target.value)}
+              onChange={(e) =>
+                handleDateFilterChange(e.target.value as DateEnum)
+              }
             >
               <option value="whole-period">WHOLE PERIOD</option>
               <option value="today">TODAY</option>
