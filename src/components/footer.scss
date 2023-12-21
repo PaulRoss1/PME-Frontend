@@ -1,0 +1,21 @@
+$red: #e5091c;
+$grey: #333333;
+
+.pme-footer {
+  background-color: $grey;
+  color: #fff;
+  font-weight: 100;
+  font-family: "Gilroy-Regular";
+  font-size: 18px;
+  text-align: center;
+  padding: 10px;
+
+  a {
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #e5091c;
+  }
+}

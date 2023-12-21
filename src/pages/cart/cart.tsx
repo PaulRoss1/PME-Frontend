@@ -7,6 +7,7 @@ import { Events } from "../../types";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import { NavigationButton } from "../../elements/navigation_button";
 
 export const Cart = () => {
   const [totalAmount, setTotalAmount] = useState(0);
@@ -42,10 +43,8 @@ export const Cart = () => {
     <>
       {totalAmount == 0 ? (
         <div className="pme-cart__empty">
-          <h2>xxx your cart is empty</h2>
-          <button className="pme-cart__continue" onClick={() => navigate("/")}>
-            Continue Browsing
-          </button>
+          <h2 className="pme-cart__empty-text">xxx your cart is empty</h2>
+          <NavigationButton buttonText="Continue Browsing" />
         </div>
       ) : (
         <>
@@ -70,12 +69,7 @@ export const Cart = () => {
             <span className="pme-cart__subtotal">
               Subtotal: <span>{totalAmount} Kč</span>
             </span>
-            <button
-              className="pme-cart__continue"
-              onClick={() => navigate("/")}
-            >
-              Continue Browsing
-            </button>
+            <NavigationButton buttonText="Continue Browsing" />
             <button className="pme-cart__checkout-btn">Checkout</button>
           </div>
         </>

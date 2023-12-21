@@ -12,6 +12,7 @@ import { Cart } from "./pages/cart/cart";
 import { NotFound } from "./pages/not_found/not_found";
 import { EventContextProvider } from "./context/event-context";
 import { ScrollToTop } from "./helpers/helperFunctions";
+import { Footer } from "./components/footer";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="*" element={<Navigate to="/404" />} />
             <Route path="/404" element={<NotFound />} />
           </Routes>
+          <Footer />
         </Router>
       </EventContextProvider>
     </div>

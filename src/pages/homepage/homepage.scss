@@ -257,7 +257,7 @@ $grey: #333333;
 .pme-events {
   background-color: #f4f4f4;
   padding-top: 46px;
-  padding-bottom: 46px;
+  padding-bottom: 150px;
 
   &__loading {
     display: flex;
@@ -287,11 +287,11 @@ $grey: #333333;
     margin-bottom: 100vh;
     margin-top: 9px;
     text-align: center;
-    font-size: 23px;
+    font-size: 32px;
     font-weight: 500;
     text-decoration: none;
     color: #222222;
-    font-family: Gilroy-SemiBold;
+    // font-family: Gilroy-SemiBold;
   }
 
   &__cards {

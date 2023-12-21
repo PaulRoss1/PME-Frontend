@@ -96,24 +96,24 @@ export const EventPage = () => {
           </div>
         </div>
       </div>
-      <div className="pme-event-page__more-container">
-        <div className="pme-event-page__more">
-          {sameDayEvents.length > 0 && (
+      {sameDayEvents.length > 0 && (
+        <div className="pme-event-page__more-container">
+          <div className="pme-event-page__more">
             <h2>
               MORE <span className="pme-event-page__more-span">EVENTS</span> ON{" "}
               {formatDate(currentEvent?.date)}
             </h2>
-          )}
 
-          <Container>
-            <Row>
-              {sameDayEvents.map((event) => (
-                <Event data={event} key={event.id} />
-              ))}
-            </Row>
-          </Container>
+            <Container>
+              <Row>
+                {sameDayEvents.map((event) => (
+                  <Event data={event} key={event.id} />
+                ))}
+              </Row>
+            </Container>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   ) : (
     <NotFound />
