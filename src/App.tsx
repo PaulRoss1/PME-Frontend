@@ -23,7 +23,7 @@ function App() {
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Homepage />} />
-            <Route path="/event/:id" element={<EventPage />} />
+            <Route path="/event/:slug/:id" element={<EventPage />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="*" element={<Navigate to="/404" />} />
             <Route path="/404" element={<NotFound />} />

@@ -15,11 +15,12 @@ interface CartItemProps {
     venue: string;
     date: string;
     event_type: string;
+    slug: string;
   };
 }
 
 export const CartItem = (props: CartItemProps) => {
-  const { id, name, image, price, venue, date, event_type } = props.data;
+  const { id, name, image, price, venue, date, event_type, slug } = props.data;
 
   interface CartItemContextType {
     cartItems: Record<number, number>;
@@ -42,7 +43,7 @@ export const CartItem = (props: CartItemProps) => {
       <img className="pme-cart__item-image" src={image} alt="" />
       <div className="TWO">
         <div className="ONE">
-          <Link className="pme-cart__item-title" to={`/event/${id}`}>
+          <Link className="pme-cart__item-title" to={`/event/${slug}/${id}`}>
             {name}
           </Link>
           <span className="pme-cart__item-info">

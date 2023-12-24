@@ -35,6 +35,8 @@ export const EventPage = () => {
     (event: { id: number }) => event.id === parseInt(id as string)
   );
 
+  currentEvent && (document.title = currentEvent.name);
+
   const sameDayEvents: Events[] = events
     .filter((event: { date: string }) => event.date === currentEvent?.date)
     .filter((event: { id: number }) => event.id !== currentEvent?.id);

@@ -12,6 +12,8 @@ import { NavigationButton } from "../../elements/navigation_button";
 export const Cart = () => {
   const [totalAmount, setTotalAmount] = useState(0);
 
+  document.title = "Prague Music Events | Cart";
+
   interface CartContextType {
     events: Events[];
     cartItems: Record<number, number>;

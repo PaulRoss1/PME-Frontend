@@ -2,7 +2,7 @@ export interface Events {
   id: number;
   event_type: string;
   name: string;
-  get_absolute_url: string;
+  slug: string;
   venue: string;
   address: string;
   date: string;

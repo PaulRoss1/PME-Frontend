@@ -36,6 +36,8 @@ export const Homepage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedEvent, setSelectedEvent] = useState<Events | null>(null);
 
+  document.title = "Prague Music Events";
+
   interface HomepageContextType {
     loading: boolean;
     setLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -135,9 +137,6 @@ export const Homepage = () => {
           endDate.setDate(startDate.getDate() + 1);
           // startDate.setDate(today.getDate());
         }
-
-        console.log("startDate: " + startDate.toISOString().split("T")[0]);
-        console.log("endDate: " + endDate.toISOString().split("T")[0]);
 
         return {
           startDate: startDate.toISOString().split("T")[0],

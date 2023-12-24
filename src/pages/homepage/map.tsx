@@ -80,7 +80,7 @@ export const EventsMap = ({ data, info }: MapProps) => {
                       <div key={event.id}>
                         <Link
                           className="pme-map__info-details"
-                          to={`/event/${event.id}`}
+                          to={`/event/${event.slug}/${event.id}`}
                         >
                           {`${event.date.split("-")[2]}.${
                             event.date.split("-")[1]
