@@ -4,6 +4,8 @@ import { EventContext } from "../../context/event-context";
 import { useNavigate } from "react-router-dom";
 import { CartItem } from "./cart-item";
 import { Events } from "../../types";
+
+import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
 
 import Container from "react-bootstrap/Container";
@@ -73,7 +75,14 @@ export const Cart = () => {
               Subtotal: <span>{totalAmount} Kč</span>
             </span>
             <NavigationButton buttonText="Continue Browsing" />
-            <button className="pme-cart__checkout-btn">Checkout</button>
+            <button
+              data-tooltip-id="checkout-tooltip"
+              data-tooltip-content="Practice Project - Unavailable"
+              className="pme-cart__checkout-btn"
+            >
+              Checkout
+            </button>
+            <Tooltip id="checkout-tooltip" />
           </div>
         </>
       )}
