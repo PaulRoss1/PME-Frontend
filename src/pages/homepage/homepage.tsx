@@ -239,7 +239,7 @@ export const Homepage = () => {
             </div>
           ) : (
             <div className="pme-events__no-events">
-              xxx sorry there are no events at this time
+              Sorry, there are no events on this day.{" "}
             </div>
           )}
 

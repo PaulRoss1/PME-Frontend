@@ -9,7 +9,7 @@ export const NotFound = () => {
 
   return (
     <div className="pme-not-found">
-      <h2 className="pme-not-found__text">xxx not found</h2>
+      <h2 className="pme-not-found__text">Oops, this page doesn't exist.</h2>
       <NavigationButton buttonText="Back To Homepage" />
     </div>
   );

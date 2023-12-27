@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Musical note icon by Arthur Shlain from Usefulicons.com -->
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" width="400px" height="400px"><path d="M30,60.918C28.429,60.36,26.763,60,25,60c-8.284,0-15,6.716-15,15c0,8.284,6.716,15,15,15s15-6.716,15-15V38.333l40-6.667   v19.252C78.429,50.36,76.763,50,75,50c-8.284,0-15,6.716-15,15c0,8.284,6.716,15,15,15s15-6.716,15-15V10L30,20V60.918z" stroke="none"></path></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" width="400px" height="400px">
+    <path d="M30,60.918C28.429,60.36,26.763,60,25,60c-8.284,0-15,6.716-15,15c0,8.284,6.716,15,15,15s15-6.716,15-15V38.333l40-6.667   v19.252C78.429,50.36,76.763,50,75,50c-8.284,0-15,6.716-15,15c0,8.284,6.716,15,15,15s15-6.716,15-15V10L30,20V60.918z" fill="#e5091c" stroke="none"></path>
+</svg>

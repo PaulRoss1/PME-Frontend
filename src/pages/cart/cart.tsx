@@ -4,6 +4,7 @@ import { EventContext } from "../../context/event-context";
 import { useNavigate } from "react-router-dom";
 import { CartItem } from "./cart-item";
 import { Events } from "../../types";
+import { Tooltip } from "react-tooltip";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -45,7 +46,7 @@ export const Cart = () => {
     <>
       {totalAmount == 0 ? (
         <div className="pme-cart__empty">
-          <h2 className="pme-cart__empty-text">xxx your cart is empty</h2>
+          <h2 className="pme-cart__empty-text">Your cart is empty.</h2>
           <NavigationButton buttonText="Continue Browsing" />
         </div>
       ) : (
