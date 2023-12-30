@@ -40,13 +40,11 @@ export const Cart = () => {
     setTotalAmount(total);
   }, [events, cartItems]);
 
-  const navigate = useNavigate();
-
   return events.length === 0 ? (
     <span className="pme-events__loading"></span>
   ) : (
     <>
-      {totalAmount == 0 ? (
+      {totalAmount === 0 ? (
         <div className="pme-cart__empty">
           <h2 className="pme-cart__empty-text">Your cart is empty.</h2>
           <NavigationButton buttonText="Continue Browsing" />

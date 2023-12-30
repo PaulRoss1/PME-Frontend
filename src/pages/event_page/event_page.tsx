@@ -1,6 +1,6 @@
-import React, { Fragment, useContext } from "react";
+import React, { useContext } from "react";
 import "./event_page.scss";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { EventContext } from "../../context/event-context";
 import { Events } from "../../types";
 import Container from "react-bootstrap/esm/Container";
@@ -57,7 +57,7 @@ export const EventPage = () => {
           style={{ backgroundImage: `url(${currentEvent?.image})` }}
         ></div>
 
-        <img src={currentEvent?.image}></img>
+        <img alt={currentEvent?.name} src={currentEvent?.image}></img>
       </div>
       <div className="pme-event-page__info-section">
         <div className="pme-event-page__container">

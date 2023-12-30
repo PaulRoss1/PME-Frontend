@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-// import "./cart.css";
+import React, { useContext } from "react";
 import { EventContext } from "../../context/event-context";
 import { Link } from "react-router-dom";
 
