@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { EventContext } from "../../context/event-context";
 import { Link } from "react-router-dom";
-
 import Col from "react-bootstrap/Col";
 import { formatDate } from "../../helpers/helperFunctions";
 
@@ -40,8 +39,8 @@ export const CartItem = (props: CartItemProps) => {
   return (
     <Col md={6} xs={12} className="pme-cart__item">
       <img className="pme-cart__item-image" src={image} alt="" />
-      <div className="TWO">
-        <div className="ONE">
+      <div className="pme-cart__outer">
+        <div className="pme-cart__inner">
           <Link className="pme-cart__item-title" to={`/event/${slug}/${id}`}>
             {name}
           </Link>

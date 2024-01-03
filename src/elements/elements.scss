@@ -1,0 +1,38 @@
+@import "../_variables.scss";
+
+.pme-loading {
+  display: flex;
+  margin: auto;
+  border: 20px solid #fff;
+  border-radius: 50%;
+  border-top: 20px solid $red;
+  width: 100px;
+  height: 100px;
+  animation: spinner 2.5s linear infinite;
+  margin-top: 20px;
+  margin-bottom: 100vh;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.pme-navigation-button {
+  width: 150px;
+  height: 54px;
+  background-color: $red;
+  font-family: Gilroy-Bold;
+  font-size: 15px;
+  color: #fff;
+  border: none;
+
+  @media (min-width: $breakpoint-tablet) {
+    width: 177px;
+    font-size: 18px;
+  }
+}

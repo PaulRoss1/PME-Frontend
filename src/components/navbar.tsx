@@ -1,14 +1,11 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./navbar.scss";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
-
+import { useNavigate, useLocation } from "react-router-dom";
 import { EventContext } from "../context/event-context";
 
 export const Navbar = () => {
   interface NavbarContextType {
-    // cartItemsCount: number;
-
     cartItems: Record<number, number>;
   }
 

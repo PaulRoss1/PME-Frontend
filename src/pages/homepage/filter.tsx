@@ -1,6 +1,5 @@
 import React from "react";
 import { EventTypeEnum, DateEnum } from "./homepage";
-// import "./homepage.scss";
 
 interface FilterProps {
   data: {

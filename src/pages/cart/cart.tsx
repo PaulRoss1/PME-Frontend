@@ -1,16 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./cart.scss";
 import { EventContext } from "../../context/event-context";
-import { useNavigate } from "react-router-dom";
-import { CartItem } from "./cart-item";
 import { Events } from "../../types";
-
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
-
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
 import { NavigationButton } from "../../elements/navigation_button";
+import { Loading } from "../../elements/loading";
+import { EmptyCart } from "./empty_cart";
+import { CartItems } from "./cart-items";
 
 export const Cart = () => {
   const [totalAmount, setTotalAmount] = useState(0);
@@ -20,11 +17,10 @@ export const Cart = () => {
   interface CartContextType {
     events: Events[];
     cartItems: Record<number, number>;
-    loading: boolean;
     setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   }
 
-  const { events, cartItems, loading, setLoading } = useContext(
+  const { events, cartItems, setLoading } = useContext(
     EventContext
   ) as unknown as CartContextType;
 
@@ -41,31 +37,18 @@ export const Cart = () => {
   }, [events, cartItems]);
 
   return events.length === 0 ? (
-    <span className="pme-events__loading"></span>
+    <Loading />
   ) : (
     <>
       {totalAmount === 0 ? (
-        <div className="pme-cart__empty">
-          <h2 className="pme-cart__empty-text">Your cart is empty.</h2>
-          <NavigationButton buttonText="Continue Browsing" />
-        </div>
+        <EmptyCart />
       ) : (
         <>
           <div className="pme-cart">
             <div>
               <h2 className="pme-cart__title">Cart Items</h2>
             </div>
-            <div className="pme-cart__items">
-              <Container>
-                <Row>
-                  {events.map((event) => {
-                    if (cartItems[event.id] !== 0) {
-                      return <CartItem data={event} key={event.id} />;
-                    }
-                  })}
-                </Row>
-              </Container>
-            </div>
+            <CartItems events={events} cartItems={cartItems} />
           </div>
 
           <div className="pme-cart__checkout">

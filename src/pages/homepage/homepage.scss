@@ -1,5 +1,4 @@
-$red: #e5091c;
-$grey: #333333;
+@import "../../_variables.scss";
 
 .pme-map {
   /* scrollbar */
@@ -24,13 +23,13 @@ $grey: #333333;
   &__info-venue {
     color: #000;
     font-weight: 600;
+
     hr {
       margin-top: 7px;
       margin-bottom: 7px;
       width: 93%;
     }
   }
-
   &__info-window {
     max-width: 180px;
     text-align: left;
@@ -39,7 +38,6 @@ $grey: #333333;
     text-overflow: ellipsis;
     padding-right: 5px;
   }
-
   &__info-details {
     text-decoration: none;
     font-weight: 500;
@@ -47,48 +45,31 @@ $grey: #333333;
     line-height: 24px;
     white-space: nowrap;
   }
-
   &__info-details:hover {
     color: $red;
   }
 }
 
 .pme-filter {
-  /* height: 70px; */
-  /* display: flex;
-  align-items: center; */
-
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-
   min-height: 70px;
   max-width: 1250px;
   margin: auto;
-  // padding-left: 10px;
-  // padding-right: 10px;
-
   padding-left: 30px;
   padding-right: 30px;
-  // padding-bottom: 30px;
-
   justify-content: center;
   align-items: center;
-
   font-family: Demo-Bebas;
   font-weight: 400;
   font-size: 20px;
   line-height: 20px;
-  ////////////////////////////////////////////////////////////////////////
   align-items: stretch;
   flex-direction: column;
-  ////////////////////////////////////////////////////////////////////////
-  @media (min-width: 768px) {
-    justify-content: space-between;
-    // padding-bottom: 0px;
-    // padding-left: 30px;
-    // padding-right: 30px;
 
+  @media (min-width: $breakpoint-tablet) {
+    justify-content: space-between;
     flex-direction: row;
     align-items: center;
   }
@@ -98,7 +79,6 @@ $grey: #333333;
     justify-content: space-between;
     align-items: center;
   }
-
   &__button {
     color: black;
     font-weight: 400;
@@ -109,10 +89,7 @@ $grey: #333333;
     background: #fff;
     cursor: pointer;
 
-    // padding-top: 25px;
-    // padding-bottom: 22px;
-
-    @media (min-width: 768px) {
+    @media (min-width: $breakpoint-tablet) {
       font-size: 20px;
       margin-right: 65px;
     }
@@ -120,31 +97,27 @@ $grey: #333333;
     span {
       font-family: Gilroy-Regular;
       display: none;
-      // font-size: 13px;
 
-      @media (min-width: 768px) {
+      @media (min-width: $breakpoint-tablet) {
         display: initial;
       }
     }
   }
   &__button:hover {
     border-bottom: 3px solid $red;
-
     padding-bottom: 23px;
     padding-top: 23px;
     margin-bottom: -3px;
   }
   &__button-active {
     border-bottom: 3px solid $red;
-
     padding-bottom: 23px;
     padding-top: 23px;
-    margin-bottom: -3px; // Add a negative margin to prevent the layout shift
+    margin-bottom: -3px;
   }
   &__dropdown {
     display: inline;
     position: relative;
-
     border: 1px solid #d6d6d6;
     padding: 3px;
     border-radius: 6px;
@@ -155,18 +128,13 @@ $grey: #333333;
   }
   &__dropdown::after {
     display: inline-block;
-    /* margin-left: 0.255em; */
     vertical-align: 0.255em;
     content: "";
     border-top: 0.3em solid;
     border-right: 0.3em solid transparent;
     border-bottom: 0;
     border-left: 0.3em solid transparent;
-
     position: absolute;
-    // top: 5px;
-    // right: 28px;
-
     top: 18px;
     right: 6px;
   }
@@ -179,20 +147,12 @@ $grey: #333333;
     border: none;
     background: #fff;
     cursor: pointer;
-    // padding-top: 25px;
-
-    /* -webkit-appearance: none; */
-    /* -moz-appearance: none; */
-    /* appearance: none; */
-    /* background-image: none; */
-
     appearance: none;
     width: 150px;
     border: 1px solid transparent;
-
     width: min-content;
 
-    @media (min-width: 768px) {
+    @media (min-width: $breakpoint-tablet) {
       font-size: 20px;
     }
 
@@ -208,40 +168,31 @@ $grey: #333333;
     display: inline;
 
     input {
-      // margin-top: 18px;
       line-height: 28px;
       border: none;
       border-bottom: 2px solid #222222;
       border-radius: 3px;
-      // background-color: #fcfcfc;
       float: right;
       padding-left: 10px;
       font-family: Demo-Bebas;
       font-weight: 400;
       font-size: 20px;
       line-height: 20px;
-
-      padding-right: 25px; /* Adjust as needed based on your layout */
+      padding-right: 25px;
       background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.9536 12.9458L19 19M15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1C11.866 1 15 4.13401 15 8Z' stroke='%23222222' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
         no-repeat center right;
       background-size: 20px 20px;
-
-      // width: 350px;
-
-      ////////////////////////////////////////////////////////////////////////
       width: 100%;
-      /// ////////////////////////////////////////////////////////////////////////
-
       margin-bottom: 30px;
       margin-top: 30px;
 
-      @media (min-width: 768px) {
+      @media (min-width: $breakpoint-tablet) {
         width: 184px;
         margin-bottom: 0;
         margin-top: 0;
       }
 
-      @media (min-width: 1024px) {
+      @media (min-width: $breakpoint-desktop) {
         width: 350px;
       }
     }
@@ -259,30 +210,6 @@ $grey: #333333;
   padding-top: 46px;
   padding-bottom: 150px;
 
-  &__loading {
-    display: flex;
-    margin: auto;
-    border: 20px solid #fff;
-    border-radius: 50%;
-    border-top: 20px solid $red;
-    width: 100px;
-    height: 100px;
-    animation: spinner 2.5s linear infinite;
-
-    margin-top: 20px;
-    // margin-bottom: 250px;
-    margin-bottom: 100vh;
-  }
-
-  @keyframes spinner {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
   &__no-events {
     margin-bottom: 100vh;
     margin-top: 9px;
@@ -291,18 +218,16 @@ $grey: #333333;
     font-weight: 500;
     text-decoration: none;
     color: #222222;
-    // font-family: Gilroy-SemiBold;
+    padding-left: 20px;
+    padding-right: 20px;
   }
-
   &__cards {
     margin: auto;
     max-width: 1250px;
   }
-
   &__col {
     margin-bottom: 15px;
   }
-
   &__card {
     min-height: 433px;
     margin: auto;
@@ -311,17 +236,14 @@ $grey: #333333;
     display: flex;
     flex-direction: column;
   }
-
   &__card-image {
     width: 100%;
     cursor: pointer;
     transition: opacity 0.8s ease;
   }
-
   &__card-image:hover {
     opacity: 0.85;
   }
-
   &__card-content {
     display: flex;
     flex-direction: column;
@@ -331,21 +253,17 @@ $grey: #333333;
     padding-top: 17px;
     padding-right: 50px;
   }
-
   &__card-title {
     font-size: 23px;
     font-weight: 500;
     line-height: 1.2;
     text-decoration: none;
     color: #222222;
-
     font-family: Gilroy-SemiBold;
   }
-
   &__card-title:hover {
     color: $red;
   }
-
   &__card-info {
     display: flex;
     flex-wrap: wrap;
@@ -360,7 +278,6 @@ $grey: #333333;
       color: $red;
     }
   }
-
   &__card-button {
     width: 177px;
     height: 54px;
@@ -387,7 +304,7 @@ $grey: #333333;
   align-items: center;
   justify-content: center;
 
-  @media (min-width: 768px) {
+  @media (min-width: $breakpoint-tablet) {
     font-size: 24px;
   }
 
@@ -409,7 +326,7 @@ $grey: #333333;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="26" fill="%23222222" /><path d="M15.4697 25.4697C15.1768 25.7626 15.1768 26.2374 15.4697 26.5303L20.2426 31.3033C20.5355 31.5962 21.0104 31.5962 21.3033 31.3033C21.5962 31.0104 21.5962 30.5355 21.3033 30.2426L17.0607 26L21.3033 21.7574C21.5962 21.4645 21.5962 20.9896 21.3033 20.6967C21.0104 20.4038 20.5355 20.4038 20.2426 20.6967L15.4697 25.4697ZM35 25.25L16 25.25V26.75L35 26.75V25.25Z" fill="white" /></svg>');
     background-position: left center;
 
-    @media (min-width: 768px) {
+    @media (min-width: $breakpoint-tablet) {
       height: 54px;
     }
   }
@@ -431,7 +348,7 @@ $grey: #333333;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="26" fill="%23222222" /><path transform="rotate(180 26 26)" d="M15.4697 25.4697C15.1768 25.7626 15.1768 26.2374 15.4697 26.5303L20.2426 31.3033C20.5355 31.5962 21.0104 31.5962 21.3033 31.3033C21.5962 31.0104 21.5962 30.5355 21.3033 30.2426L17.0607 26L21.3033 21.7574C21.5962 21.4645 21.5962 20.9896 21.3033 20.6967C21.0104 20.4038 20.5355 20.4038 20.2426 20.6967L15.4697 25.4697ZM35 25.25L16 25.25V26.75L35 26.75V25.25Z" fill="white" /></svg>'); /* SVG data URI for the previous button */
     background-position: right center;
 
-    @media (min-width: 768px) {
+    @media (min-width: $breakpoint-tablet) {
       height: 54px;
     }
   }
@@ -448,29 +365,8 @@ $grey: #333333;
   }
 }
 
-.footer {
-  outline: 2px solid $red;
-  padding: 20px;
-}
-
-.map {
-  width: 100%;
-  height: 520px;
-  border-bottom: 5px solid $grey;
-}
-
 .container {
   padding-right: 30px !important;
   padding-left: 30px !important;
-  /* margin-right: 0px; */
-  /* margin-left: 0px; */
-
   max-width: none !important;
 }
-
-// .events__container {
-//   max-width: 1250px;
-//   margin: auto;
-//   padding-left: 30px;
-//   padding-right: 30px;
-// }

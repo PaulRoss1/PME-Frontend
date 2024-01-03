@@ -8,6 +8,7 @@ import Row from "react-bootstrap/esm/Row";
 import { Event } from "../../pages/homepage/event";
 import { formatDate } from "../../helpers/helperFunctions";
 import { NotFound } from "../not_found/not_found";
+import { Loading } from "../../elements/loading";
 
 export const EventPage = () => {
   const { id } = useParams<{ id: any }>();
@@ -19,17 +20,10 @@ export const EventPage = () => {
     cartItems: Record<number, number>;
     updateCartItemCount: (newAmount: number, id: number) => void;
     addToCart: (id: number) => void;
-    loading: boolean;
   }
 
-  const {
-    events,
-    removeFromCart,
-    cartItems,
-    updateCartItemCount,
-    addToCart,
-    loading,
-  } = useContext(EventContext) as EventPageContextType;
+  const { events, removeFromCart, cartItems, updateCartItemCount, addToCart } =
+    useContext(EventContext) as EventPageContextType;
 
   const currentEvent = events.find(
     (event: { id: number }) => event.id === parseInt(id as string)
@@ -48,7 +42,7 @@ export const EventPage = () => {
   };
 
   return events.length === 0 ? (
-    <span className="pme-events__loading"></span>
+    <Loading />
   ) : currentEvent ? (
     <div className="pme-event-page">
       <div className="pme-event-page__image-section">
@@ -61,8 +55,6 @@ export const EventPage = () => {
       </div>
       <div className="pme-event-page__info-section">
         <div className="pme-event-page__container">
-          {/* <button onClick={() => navigate("/")}>Back</button> */}
-
           <div className="pme-event-page__content">
             <h2 className="pme-event-page__title">{currentEvent?.name}</h2>
             <div className="pme-event-page__info">

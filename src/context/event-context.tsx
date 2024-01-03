@@ -12,7 +12,7 @@ const getDefaultCart = (events: Events[]): Record<number, number> => {
   return cart;
 };
 
-const getInitialState = () => {
+const loadCartFromLocalStorage = () => {
   const cart = localStorage.getItem("cart");
   return cart ? JSON.parse(cart) : {};
 };
@@ -21,8 +21,9 @@ export const EventContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [loading, setLoading] = useState(false);
-  const [cartItems, setCartItems] =
-    useState<Record<number, number>>(getInitialState);
+  const [cartItems, setCartItems] = useState<Record<number, number>>(
+    loadCartFromLocalStorage
+  );
   const [events, setEvents] = useState<Events[]>([]);
 
   useEffect(() => {
@@ -37,8 +38,6 @@ export const EventContextProvider: React.FC<{ children: ReactNode }> = ({
     try {
       const response = await axios.get(
         "https://pragueevents.pythonanywhere.com/api/v1/events/all/"
-        // "http://127.0.0.1:8000/api/v1/events/all/"
-        // "https://mock-api-ti6s.vercel.app/all"
       );
       const fetchedEvents = response.data;
       setEvents(fetchedEvents);

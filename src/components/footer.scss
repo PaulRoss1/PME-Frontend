@@ -1,5 +1,4 @@
-$red: #e5091c;
-$grey: #333333;
+@import "../_variables.scss";
 
 .pme-footer {
   background-color: $grey;
@@ -17,6 +16,6 @@ $grey: #333333;
     text-decoration: none;
   }
   a:hover {
-    color: #e5091c;
+    color: $red;
   }
 }

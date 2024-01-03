@@ -1,5 +1,4 @@
 import React from "react";
-// import "./homepage.scss";
 import { Link } from "react-router-dom";
 import {
   GoogleMap,

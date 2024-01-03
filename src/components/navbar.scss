@@ -1,5 +1,4 @@
-$red: #e5091c;
-$grey: #333333;
+@import "../_variables.scss";
 
 .pme-navbar {
   height: 215px;
@@ -7,14 +6,14 @@ $grey: #333333;
   padding-top: 20px;
   text-align: left;
 
-  @media (min-width: 768px) {
+  @media (min-width: $breakpoint-tablet) {
     text-align: initial;
   }
 
   &__logo {
     display: none;
 
-    @media (min-width: 768px) {
+    @media (min-width: $breakpoint-tablet) {
       display: initial;
       font-size: 26px;
       padding-left: 5%;
@@ -41,7 +40,7 @@ $grey: #333333;
       color: $red;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: $breakpoint-tablet) {
       display: none;
       margin-left: 0;
     }
@@ -64,11 +63,7 @@ $grey: #333333;
   &__cart {
     display: none;
 
-    // background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31" fill="none"><line y1="-0.25" x2="31" y2="-0.25" transform="matrix(4.37114e-08 1 1 -4.37114e-08 0.533081 0)" stroke="white" stroke-width="0.5"/><line x1="30.0661" y1="0.25" x2="-1.14598e-05" y2="0.249996" stroke="white" stroke-width="0.5"/></svg>')
-    //   center center no-repeat;
-    // background-size: cover;
-
-    @media (min-width: 768px) {
+    @media (min-width: $breakpoint-tablet) {
       display: initial;
       width: 167px;
       height: 44px;
@@ -82,7 +77,6 @@ $grey: #333333;
       color: #ffffff;
       font-size: 20px;
       font-family: Demo-Bebas;
-
       transition: 300ms ease all;
     }
 
@@ -98,7 +92,7 @@ $grey: #333333;
     top: 20px;
     cursor: pointer;
 
-    @media (min-width: 768px) {
+    @media (min-width: $breakpoint-tablet) {
       display: none;
     }
   }
@@ -131,49 +125,4 @@ $grey: #333333;
     left: 132px;
     height: 57%;
   }
-
-  // &__cart:after {
-  //   content: "";
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   width: 100%;
-  //   height: 100%;
-  // }
-
-  // &__cart svg {
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   width: 100%;
-  //   height: 100%;
-  // }
-
-  // &__cart:after {
-  //   content: ""; /* Required for the pseudo-element to appear */
-  //   position: absolute; /* Position the pseudo-element relative to the button */
-  //   top: 0;
-  //   left: 0;
-  //   width: 100%;
-  //   height: 100%;
-  //   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31" fill="none"><line y1="-0.25" x2="31" y2="-0.25" transform="matrix(4.37114e-08 1 1 -4.37114e-08 0.533081 0)" stroke="white" stroke-width="0.5"/><line x1="30.0661" y1="0.25" x2="-1.14598e-05" y2="0.249996" stroke="white" stroke-width="0.5"/></svg>')
-  //     center center no-repeat;
-  //   background-size: cover;
-  //   pointer-events: none; /* Ensure the pseudo-element does not interfere with button clicks */
-  // }
-
-  // &__cart:after {
-  //   content: ""; /* Required for the pseudo-element to appear */
-  //   position: absolute; /* Position the pseudo-element relative to the button */
-  //   top: 0;
-  //   left: 0;
-  //   width: 100%;
-  //   height: 100%;
-  //   background: url("data:image/svg+xml;base64," + btoa(
-  //         '<svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31" fill="none"><line y1="-0.25" x2="31" y2="-0.25" transform="matrix(4.37114e-08 1 1 -4.37114e-08 0.533081 0)" stroke="white" stroke-width="0.5"/><line x1="30.0661" y1="0.25" x2="-1.14598e-05" y2="0.249996" stroke="white" stroke-width="0.5"/></svg>'
-  //       ))
-  //     center center no-repeat;
-  //   background-size: cover;
-  //   pointer-events: none; /* Ensure the pseudo-element does not interfere with button clicks */
-  // }
 }

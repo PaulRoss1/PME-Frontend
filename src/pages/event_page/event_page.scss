@@ -1,5 +1,4 @@
-$red: #e5091c;
-$grey: #333333;
+@import "../../_variables.scss";
 
 .pme-event-page {
   &__image-section {
@@ -8,14 +7,10 @@ $grey: #333333;
     display: flex;
     justify-content: center !important;
     border-bottom: 5px solid $grey;
-    // background-color: $red;
-    // color: $grey;
-
     position: relative;
     overflow: hidden;
 
     img {
-      max-width: 100%;
       max-width: 700px;
     }
   }
@@ -55,10 +50,14 @@ $grey: #333333;
 
   &__title {
     font-family: Gilroy-Bold;
-    font-size: 40px;
+    font-size: 30px;
     margin-top: 4px;
     margin-bottom: 22px;
     color: #232323 !important;
+
+    @media (min-width: $breakpoint-tablet) {
+      font-size: 40px;
+    }
   }
 
   &__info {
@@ -69,13 +68,13 @@ $grey: #333333;
     justify-content: space-around;
     flex-direction: column;
 
-    @media (min-width: 768px) {
+    @media (min-width: $breakpoint-tablet) {
       flex-direction: row;
     }
   }
   &__address {
     font-family: Gilroy-Regular;
-    font-size: 30px;
+    font-size: 20px;
     margin-bottom: 14px;
   }
   &__price {
@@ -115,7 +114,7 @@ $grey: #333333;
       font-family: Gilroy-Regular;
       padding-left: 14px;
 
-      @media (min-width: 768px) {
+      @media (min-width: $breakpoint-tablet) {
         width: 161px;
       }
     }
@@ -125,13 +124,9 @@ $grey: #333333;
     border: 2px solid #222222;
     background-color: #fff;
     color: #222222;
-
     font-family: Gilroy-Regular;
     font-size: 18px;
     font-weight: 400;
-    // line-height: 21px;
-    // letter-spacing: 0em;
-    // text-align: left;
   }
 
   &__more-container {
@@ -147,18 +142,28 @@ $grey: #333333;
     h2 {
       text-transform: uppercase;
       text-align: center;
-      font-size: 60px;
+      font-size: 40px;
       font-weight: 100;
       font-family: Demo-Bebas-two;
       margin-bottom: 60px;
+      padding-left: 20px;
+      padding-right: 20px;
+
+      @media (min-width: $breakpoint-tablet) {
+        font-size: 60px;
+      }
     }
   }
   &__more-span {
     text-transform: uppercase;
     text-align: center;
     color: $red;
-    font-size: 60px;
+    font-size: 40px;
     font-weight: 100;
     font-family: Demo-Bebas-two;
+
+    @media (min-width: $breakpoint-tablet) {
+      font-size: 60px;
+    }
   }
 }

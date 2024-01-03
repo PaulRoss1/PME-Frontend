@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./navigation_button.scss";
+import "./elements.scss";
 
 export const NavigationButton = ({ buttonText = "Continue Browsing" }) => {
   const navigate = useNavigate();
