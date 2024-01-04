@@ -21,7 +21,7 @@ export const EventsMap = ({ data, info }: MapProps) => {
   const { selectedEvent, setSelectedEvent } = info;
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyBBZiKuuA8FmadX6VdaVcIodJMH-ZUEBLY",
+    googleMapsApiKey: String(process.env.REACT_APP_API_KEY),
   });
 
   const center = useMemo(() => ({ lat: 50.0755, lng: 14.4378 }), []);

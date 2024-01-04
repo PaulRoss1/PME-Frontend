@@ -30,9 +30,14 @@
   font-size: 15px;
   color: #fff;
   border: none;
+  transition: 300ms ease all;
 
   @media (min-width: $breakpoint-tablet) {
     width: 177px;
     font-size: 18px;
   }
+}
+
+.pme-navigation-button:hover {
+  background-color: #c40818;
 }

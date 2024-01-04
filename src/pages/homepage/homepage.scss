@@ -50,6 +50,10 @@
   }
 }
 
+.gm-style iframe + div {
+  border: none !important;
+}
+
 .pme-filter {
   display: flex;
   justify-content: space-between;
