@@ -1,6 +1,6 @@
 # Prague Music Events - Frontend
 
-#### A website for browsing upcoming events in Prague.
+A website for browsing upcoming events in Prague.
 
 ## Technologies Used
 
