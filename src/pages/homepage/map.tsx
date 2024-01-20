@@ -76,7 +76,7 @@ export const EventsMap = ({ data, info }: MapProps) => {
                       (event) => event.lat_long === selectedEvent.lat_long
                     )
                     .map((event) => (
-                      <div key={event.id}>
+                      <div key={event.id} className="text-truncate">
                         <Link
                           className="pme-map__info-details"
                           to={`/event/${event.slug}/${event.id}`}

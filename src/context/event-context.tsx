@@ -13,8 +13,11 @@ const getDefaultCart = (events: Events[]): Record<number, number> => {
 };
 
 const loadCartFromLocalStorage = () => {
-  const cart = localStorage.getItem("cart");
-  return cart ? JSON.parse(cart) : {};
+  const currentDay = new Date().getDate();
+  const savedData = JSON.parse(localStorage.getItem("cart") || "{}");
+  const { cartItems, savedDay } = savedData;
+
+  return String(savedDay) === String(currentDay) ? cartItems : {};
 };
 
 export const EventContextProvider: React.FC<{ children: ReactNode }> = ({
@@ -27,7 +30,14 @@ export const EventContextProvider: React.FC<{ children: ReactNode }> = ({
   const [events, setEvents] = useState<Events[]>([]);
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartItems));
+    const currentDay = new Date().getDate();
+
+    const cartData = {
+      cartItems,
+      savedDay: currentDay,
+    };
+
+    localStorage.setItem("cart", JSON.stringify(cartData));
   }, [cartItems]);
 
   useEffect(() => {

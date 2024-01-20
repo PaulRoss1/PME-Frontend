@@ -8,11 +8,20 @@ export const Footer = () => (
     </p>
     <p>
       Check out more of my work on{" "}
-      <a href="https://github.com/yourusername">GitHub</a>.
+      <a href="https://github.com/PaulRoss1" target="_blank">
+        GitHub
+      </a>
+      .
     </p>
     <p>
       Source code for this project can be found{" "}
-      <a href="https://github.com/yourusername/thisproject">here</a>.
+      <a
+        href="https://github.com/PaulRoss1/Prague-Music-Events"
+        target="_blank"
+      >
+        here
+      </a>
+      .
     </p>
   </footer>
 );
